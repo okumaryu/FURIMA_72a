@@ -1,1 +1,1 @@
-server 54.168.4.138, user: okumaryu, roles: %w{app db web}
+server 54.168.4.138, user: 'ec2-user', roles: %w{app db web}
