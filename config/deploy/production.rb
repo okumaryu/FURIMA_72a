@@ -1,0 +1,1 @@
+server 54.168.4.138, user: okumaryu, roles: %w{app db web}
