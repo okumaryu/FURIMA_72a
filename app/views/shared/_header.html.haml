@@ -1,0 +1,55 @@
+.body
+  .header
+    .header-inner
+      .innner-top
+        %h1.innner-icon
+          %a.innner-icon__a{href: "#"}
+            %span.innner-icon__image
+              = image_tag src="/assets/logo.png", size: "140x41"
+        .innner-top__box
+          %form{"accept-charset" => "UTF-8", action: "#", method: "get"}
+            %input{name: "utf8", type: "hidden", value: "✓"}/
+            %input{class:'innner-top__box-input', name: "key", placeholder: "キーワードから探す" }/
+            %button{type: "submit"}
+              %span.innner-top__box__icon
+                = image_tag src= "/assets/icon-search 1.png"
+       
+      .innner-lists
+        %ul.lists-left
+          %li.lists-left__item
+            %a{href: "#", class: "lists-left__item-category" } カテゴリー
+            -# .tree.displayNone
+            -#   %ul.categoryTree
+            -#     %li.categoryTree--item
+            -#       %a#1{:href => "#"} レディース
+            -#     %li.categoryTree--item
+            -#       %a#2{:href => "#"} メンズ
+            -#     %li.categoryTree--item
+            -#       %a#3{:href => "#"} ベビー・キッズ
+            -#     %li.categoryTree--item
+            -#       %a#4{:href => "#"} インテリア・住まい・小物
+            -#     %li.categoryTree--item
+            -#       %a#5{:href => "#"} 本・音楽・ゲーム
+            -#     %li.categoryTree--item
+            -#       %a#6{:href => "#"} おもちゃ・ホビー・グッズ
+            -#     %li.categoryTree--item
+            -#       %a#7{:href => "#"} コスメ・香水・美容
+            -#     %li.categoryTree--item
+            -#       %a#8{:href => "#"} 家電・スマホ・カメラ
+            -#     %li.categoryTree--item
+            -#       %a#9{:href => "#"} スポーツ・レジャー
+            -#     %li.categoryTree--item
+            -#       %a#10{:href => "#"} ハンドメイド
+            -#     %li.categoryTree--item
+            -#       %a#11{:href => "#"} チケット
+            -#     %li.categoryTree--item
+            -#       %a#12{:href => "#"} 自動車・オートバイ
+            -#     %li.categoryTree--item
+            -#       %a#13{:href => "#"} その他
+          %li.lists-left__item
+            %a{href: "#", class:"lists-left__item-brand" } ブランド
+        %ul.lists-right
+          %li.lists-right__item
+            %a{href: "#", class:"lists-right__item-login"} ログイン
+          %li.lists-right__item
+            %a{href:"#", class:"lists-right__item-register"} 新規会員登録
