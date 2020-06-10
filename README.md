@@ -69,16 +69,20 @@
 |price|integer|null: false|
 |brand_id|integer|foreign_key: true|
 |category_id|string|null: false, foreign_key: true|
-|size|string|null: false|
-|product_condition|string|null: false|
+|size_id|integer|null: false, foreign_key: true|
+|product_condition_id|integer|null: false, foreign_key: true|
 |prefecture_code|integer|null: false|
-|postage_payer|string|null: false|
-|shipping_date|string|null: false|
-|seller_id|string|null: false, foreign_key: true|
-|buyer_id|string|null: false, foreign_key: true|
+|postage_payer_id|integer|null: false, foreign_key: true|
+|shipping_date_id|integer|null: false, foreign_key: true|
+|seller_id|integer|null: false, foreign_key: true|
+|buyer_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :Brand
 - belongs_to :Category
+- belongs_to_active_hash :size
+- belongs_to_active_hash :product_condition
+- belongs_to_active_hash :postage_payer
+- belongs_to_active_hash :shipping_date
 - has_many :Productphotoes, dependent: :destroy
 - has_many :Likes, dependent: :destroy
 - has_many :Comments, dependent: :destroy
@@ -98,7 +102,7 @@
 |------|----|-------|
 |name|string||
 ### Association
-- has_many :product
+- has_many :products
 
 ## Categories
 |Column|Type|Options|
@@ -106,7 +110,35 @@
 |name|string|null: false|
 |ancestry|string|null: false|
 ### Association
-- has_many :product
+- has_many :products
+
+## Sizes (active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|size|string|null: false|
+### Association
+- has_many :products
+
+## Product_conditions (active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|product_condition|string|null: false|
+### Association
+- has_many :products
+
+## Postage_payers (active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|Postage_payer|string|null: false|
+### Association
+- has_many :products
+
+## shipping_dates (active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|shipping_date|string|null: false|
+### Association
+- has_many :products
 
 ## Likes
 |Column|Type|Options|
