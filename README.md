@@ -7,9 +7,9 @@
 |password|string|null: false|
 |email|string|null: false|
 ### Association
-- has_one :profiles, dependent: :destroy
-- has_one :addresses, dependent: :destroy
-- has_one :creditcards, dependent: :destroy
+- has_one :profile, dependent: :destroy
+- has_one :addresse, dependent: :destroy
+- has_one :creditcard, dependent: :destroy
 - has_many :seller_products, foreign_key: "seller_id", class_name: "products"
 - has_many :buyer_products, foreign_key: "buyer_id", class_name: "products"
 - has_many :likes, dependent: :destroy
