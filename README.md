@@ -64,7 +64,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |product_name|string|null: false|
-|productphoto_id|integer|null: false, foreign_key: true|
 |description|text|null: false|
 |price|integer|null: false|
 |brand_id|integer|foreign_key: true|
