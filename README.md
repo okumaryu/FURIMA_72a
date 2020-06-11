@@ -7,14 +7,14 @@
 |password|string|null: false|
 |email|string|null: false|
 ### Association
-- has_one :Profiles, dependent: :destroy
-- has_one :Addresses, dependent: :destroy
-- has_one :Creditcards, dependent: :destroy
+- has_one :profiles, dependent: :destroy
+- has_one :addresses, dependent: :destroy
+- has_one :creditcards, dependent: :destroy
 - has_many :seller_products, foreign_key: "seller_id", class_name: "products"
 - has_many :buyer_products, foreign_key: "buyer_id", class_name: "products"
-- has_many :Likes, dependent: :destroy
-- has_many :Comments, dependent: :destroy
-- has_many :Todolists
+- has_many :likes, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :todolists
 
 ## Profiles
 |Column|Type|Options|
@@ -77,15 +77,15 @@
 |seller_id|integer|null: false, foreign_key: true|
 |buyer_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :Brand
-- belongs_to :Category
+- belongs_to :brand
+- belongs_to :category
 - belongs_to_active_hash :size
 - belongs_to_active_hash :product_condition
 - belongs_to_active_hash :postage_payer
 - belongs_to_active_hash :shipping_date
-- has_many :Productphotoes, dependent: :destroy
-- has_many :Likes, dependent: :destroy
-- has_many :Comments, dependent: :destroy
+- has_many :productphotoes, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :comments, dependent: :destroy
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 
