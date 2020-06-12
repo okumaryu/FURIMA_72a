@@ -5,14 +5,14 @@
         %h1.innner-icon
           %a.innner-icon__a{href: "#"}
             %span.innner-icon__image
-              = image_tag src="/assets/logo.png", size: "140x41"
+              = image_tag "/assets/logo.png", size: "140x41"
         .innner-top__box
           %form{"accept-charset": "UTF-8", action: "#", method: "get"}
             %input{name: "utf8", type: "hidden", value: "✓"}/
             %input{class:'innner-top__box-input', name: "key", placeholder: "キーワードから探す" }/
             %button{type: "submit"}
               %span.innner-top__box__icon
-                = image_tag src= "/assets/icon-search 1.png"
+                = image_tag "/assets/icon-search 1.png"
       .innner-lists
         %ul.lists-left
           %li.lists-left__item

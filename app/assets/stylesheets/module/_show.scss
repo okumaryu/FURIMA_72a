@@ -25,7 +25,10 @@ body {
         content: "\f105";
       }
       a{
+        color: #000;
         text-decoration: none;
+      }
+      a:hover{
         color: #3CCACE;
       }
     }
