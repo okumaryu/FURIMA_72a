@@ -1,25 +1,51 @@
 .wrapper
   .header
-    Furima
-  .body
-    .photos
-      .style_formLabel
-        %label
-          出品画像
-        %span
-          必須
-      %p
-        最大１０枚までアップロードできます
-      .upload-box
-        %p.sign
-          ドラックしてアンドロップ
-        %p.sign
-          またはクリックしてファイルをアップロード
-        
-    .commodity
+    %img(src="assets/logo.png" alt="ロゴ" width="140" height="41")
+  .items
+    .body
+      .photos
+        .style_formLabel
+          %label
+            出品画像
+          %span
+            必須
+        %p
+          最大１０枚までアップロードできます
+        .upload-box
+          
+      .commodity
+        .commodity__name
+          .style_formLabel
+            %label
+            .type-box
+        .commodity__detail
+          .style_formLabel
+            %label
+            .type-box
+      .details
+        .style_formLabel
+          %label
+          .check-box
+        .style_formLabel
+          %label
+          .check-box
+        .style_formLabel
+          %label
+          .check-box
+      .delivery
+        .style_formLabel
+          %label
+          .check-box
+        .style_formLabel
+          %label
+          .check-box
+        .style_formLabel
+          %label
+          .check-box
+      .price
 
-    .details
-    .delivery
-    .price
-    .bottom
+      .button
+        .button__sell
+        .button__save
+        .button__back
   .footer
