@@ -132,9 +132,28 @@
             %option{:value => "2"} 2~3日
             %option{:value => "3"} 4~7日
       .price
-
-      .button
-        .button__sell
-        .button__save
-        .button__back
+        .price__celect
+          %label
+            販売価格
+          %input{:type => "number", :value => "0"}
+        .price__fee
+          %p
+            販売手数料
+          %p
+            ー
+      .bottom
+        .profit
+          %p
+            販売利益
+          %p
+            ー  
+        .button    
+          .button__sell
+            出品する
+          .button__save
+            下書きに保存
+          .button__back
+            もどる
+      .warning
+        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   .footer

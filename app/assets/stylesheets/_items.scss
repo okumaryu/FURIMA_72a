@@ -41,14 +41,44 @@
   border-bottom: 1px solid rgb(245, 245, 245);
 }
 .price{
+  padding: 40px;
   height: 182px;
   border-bottom: 1px solid rgb(245, 245, 245);
-  background-color: brown;
+  &__celect{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  }
+  &__fee{
+  display: flex;
+  justify-content: space-between;
+
+  }
+}
+.bottom{
+  border-bottom: 1px solid rgb(245, 245, 245);
+}
+.profit{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 40px;
 }
 .button{
+  text-align: center;
+  margin: 80px;
   height: 182px;
-  border-bottom: 1px solid rgb(245, 245, 245);
-  background-color: burlywood;
+  &__sell{
+    height: 40px;
+    background-color: red;
+  }
+  &__save{
+    margin-top: 10px;
+    height: 40px;
+    background-color: #cccccc;
+  }
+  &__back{
+    text-align: center;
+  }
 }
 .items{
   margin: 0px 100px;
