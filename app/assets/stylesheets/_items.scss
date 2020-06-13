@@ -11,23 +11,34 @@
   height: 220px;
 }
 .photos{
-  height: 182px;
+  height: 300px;
   border-bottom: 1px solid rgb(245, 245, 245);
+  padding: 40px;
+}
+.image-box{
+  height: 150px;
+  background-color: rgb(245, 245, 245);
+  text-align: center;
+  padding-top: 20px;
+  justify-content: center;
+  border-width: 1px;
+  border-style: dashed;
+  border-color: rgb(204, 204, 204);
 }
 .commodity{
-  height: 182px;
+  height: 416px;
   border-bottom: 1px solid rgb(245, 245, 245);
-  background-color: red;
+}
+.style__formlabel{
+  width: 100%;
 }
 .details{
   height: 182px;
   border-bottom: 1px solid rgb(245, 245, 245);
-  background-color: black;
 }
 .delivery{
   height: 182px;
   border-bottom: 1px solid rgb(245, 245, 245);
-  background-color: blue;
 }
 .price{
   height: 182px;
