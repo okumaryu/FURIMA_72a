@@ -1,5 +1,6 @@
 .wrapper{
   background-color: rgb(245, 245, 245);
+  width: 100%;
 }
 .header{
   text-align: center;
@@ -13,7 +14,10 @@
 .photos{
   height: 300px;
   border-bottom: 1px solid rgb(245, 245, 245);
-  padding: 40px;
+  
+}
+.style_formLabel{
+  text-align: center;
 }
 .image-box{
   height: 150px;
@@ -24,14 +28,14 @@
   border-width: 1px;
   border-style: dashed;
   border-color: rgb(204, 204, 204);
+  width: 620px;
+  margin: 0px auto;
 }
 .commodity{
   height: 416px;
   border-bottom: 1px solid rgb(245, 245, 245);
 }
-.style__formlabel{
-  width: 100%;
-}
+
 .details{
   height: 182px;
   border-bottom: 1px solid rgb(245, 245, 245);
