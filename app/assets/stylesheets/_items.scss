@@ -4,6 +4,7 @@
 }
 .header{
   text-align: center;
+  padding: 2%;
 }
 .body{
   background-color: white;
@@ -17,7 +18,10 @@
   
 }
 .style_formLabel{
-  text-align: center;
+  padding: 3%;
+}
+p{
+  margin-bottom:5px ;
 }
 .image-box{
   height: 150px;
@@ -37,11 +41,10 @@
 }
 
 .details{
-  height: 182px;
+  height: 4%;
   border-bottom: 1px solid rgb(245, 245, 245);
 }
 .delivery{
-  height: 182px;
   border-bottom: 1px solid rgb(245, 245, 245);
 }
 .price{
@@ -70,7 +73,7 @@
 .button{
   text-align: center;
   margin: 80px;
-  height: 182px;
+  height: 4%;
   &__sell{
     height: 40px;
     background-color: red;
@@ -85,5 +88,6 @@
   }
 }
 .items{
-  margin: 0px 100px;
+  margin: 0 auto;
+  width: 650px
 }
