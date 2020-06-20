@@ -8,7 +8,7 @@
           .style_formLabel
             %label
               出品画像
-            %span
+            %label.sign
               必須
             %p
             最大１０枚までアップロードできます
@@ -23,16 +23,22 @@
           .style_formLabel
             %p
               商品名
+              %label.sign
+                必須
             %input{:size => "67px"}
         .commodity__detail
           .style_formLabel
             %p
               商品の説明
+              %label.sign
+                必須
             %textarea(rows="8" cols="67")
       .details
         .style_formLabel
           %p
             カテゴリー
+            %label.sign
+              必須
           %select{:name => "category"}
             %option{:value => "0"} 選択してください
             %option{:value => "1"} レディース
@@ -55,6 +61,8 @@
         .style_formLabel
           %p
             商品の状態
+            %label.sign
+              必須
           %select{:name => "category"}
             %option{:value => "0"} 選択してください
             %option{:value => "1"} 新品、未使用に近い
@@ -66,6 +74,8 @@
         .style_formLabel
           %p
             配送料金の負担
+            %label.sign
+              必須
           %select{:name => "status"}
             %option{:value => "0"} 選択してください
             %option{:value => "1"} 送料込み(出品者負担)
@@ -73,6 +83,8 @@
         .style_formLabel
           %p
             発送元の地域
+            %label.sign
+              必須
           %select{:name => "region"}
             %option{:value => "0"} 選択してください
             %option{ value: "1"} 北海道
@@ -126,6 +138,8 @@
         .style_formLabel
           %p
             発送までの日数
+            %label.sign
+              必須
           %select{:name => "shippingDuration"}
             %option{:value => "0"} 選択してください
             %option{:value => "1"} 1~2日
@@ -135,7 +149,11 @@
         .price__celect
           %label
             販売価格
-          %input{:type => "number", :value => "0"}
+          %label.sign
+            必須
+          .price__celect__plate
+            ￥
+          %input{:type => "number", :value => "0",:class => "profit"}
         .price__fee
           %p
             販売手数料
@@ -156,4 +174,4 @@
             もどる
       .warning
         禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
-  .footer
+  = render "/shared/footer" 
