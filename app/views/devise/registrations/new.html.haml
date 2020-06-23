@@ -1,0 +1,43 @@
+.container01
+  .header01
+    .header01__logo
+      = image_tag '/assets/logo-white.png', alt: ''
+
+  .main01
+    .main01__container
+      .main01__container__new__registration  
+        新規会員登録
+      .main01__registration__form
+        .main01__registration__form__content
+          = link_to "#", class: "default__btn default__btn--mail" do
+            = icon('far', 'envelope' , class: "icon__mail")
+            メールアドレスで登録する
+          = link_to "#", class: "default__btn default__btn__sns default__btn__sns--google" do
+            = icon('fab', 'google',  class: "contents__btn--icon")
+            Googleで登録する
+          = link_to "#", class: "default__btn default__btn__sns default__btn__sns--facebook" do
+            = icon('fab', 'facebook-square',  class: "contents__btn--icon")
+            Facebookで登録する
+          = link_to "#", class: "default__btn default__btn__sns default__btn__sns--apple" do
+            = icon('fab', 'apple',  class: "contents__btn--icon")
+            Applede登録する
+          .form__group
+            .form__group__text
+              登録することで、
+              %a{href: '#'}利用規約
+              と
+              %a{href: '#'}プライバシーポリシー
+              に同意したものとみなされます。
+
+  .footer01
+    .nav 
+      %ul.cleafix
+        %li
+          %a{href: '#'}プライバシーポリシー
+        %li
+          %a{href: '#'}FURIMA利用規約
+        %li
+          %a{href: '#'}特定商取引に関する表記
+    %a{href: '#', class: "footer__logo"}
+      = image_tag '/assets/logo.png', alt: ''
+    %p.footer-mark © FURIMA
