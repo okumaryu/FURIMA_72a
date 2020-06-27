@@ -1,148 +1,159 @@
 * {
   box-sizing: border-box;
 }
-body {
+.body {
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 }
-.container01{
-  height:100vh;
-  width:100vw;
-  background-color: #f8f8f8;
-  .header01{
-    height: 128px;
-    min-width: 768px;
-    align-items: center;
+  .container01{
+    height:100%;
+    width:100%;
+    background-color: #f8f8f8;
+    .header01{
+      height: 128px;
+      min-width: 768px;
+      align-items: center;
       &__logo{
+        padding-top:40px ;
+
         display: flex;
-        height: 49px;
+        line-height: 49px;
         width:185px;
-        background-color:green;
+        background-color:transparent;
         color: #000;
         margin: 0 auto ;
-
-      }
-  }
-  
-  
-  .main01 {
-    height: calc(100vh - 128px - 220px);
-    width:100%;
-    display: flex;
-    &__container {
-      width: 700px;
-      height: inherit;
-      display: block;
-      text-align: center;
-      margin: 0 auto;
-      &__new__registration {
-        height: 97px;
-        background-color: #fff;
-        color: #333;
-        font-weight: bold;
-        border: solid;
-        border-width: 0;
-        padding: 32px;
-        font-size: 22px;
-      }
-    } 
-    
-    &__registration__form{
-      width:700px;
-      height: calc(531px - 97px);
-      background-color: #fff;
-      &__content{
-        padding: 40px 40px 64px;
-        
-        a.default__btn{
-          width: 343px;
-          height: 50px;
-          border: solid 1px;
-          border-radius: 4px;
-          margin: 16px 0 0;          
-          display: block;
-          text-decoration: none;
-          margin:  0 auto;
-          &--mail{
-            color:#fff;
-            background-color: #ea352d;
-            position: relative;
-            i{
-              position: absolute;
-              top:30%;
-              left:16px;
-            }
-          }
-          &__sns{
-            height: 50px;
-            width: 343px;
-            margin-top: 16px;
-            &--google{
-              background-color: #fff;
-              color:#333;
-              border: solid 1px #888;
-              position: relative;
-              i{
-                position: absolute;
-                top:30%;
-                left:16px;
-              }
-            }
-            &--facebook{
-              background-color: #385185;
-              color:#fff;
-              border: none;
-              position: relative;
-              i{
-                position: absolute;
-                top:30%;
-                left:16px;
-              }
-            }
-            &--apple{
-              background-color: #000;
-              color:#fff;
-              border: none;
-              position: relative;
-              i{
-                position: absolute;
-                top:30%;
-                left:16px;
-              }
-            }
-          }
         }
-        .form__group{
-          height: 42px;
-          width: 343px;
-          margin: 0 auto;
-          &__text{
-            margin-top: 40px;
-            display: block;
-            color:#888
-          }
-        }
-        
       }
       
-    }
-  }
-  
-  .footer01{
-    height: 220px;
-    width: 456px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: 0 auto;
-    .nav{
-      ul{
+      
+      .main01 {
+        width:100%;
         display: flex;
-        li{
-          justify-content: space-between;
+        &__container {
+          width: 700px;
+          display: block;
+          text-align: center;
+          margin: 0 auto;
+          &__new__registration {
+            height: 97px;
+            background-color: #fff;
+            color: #333;
+            font-weight: bold;
+            border: solid;
+            border-width: 0;
+            padding: 32px;
+            font-size: 22px;
+          }
+        } 
+        
+        &__registration__form{
+          width:700px;
+          height: calc(531px - 97px);
+          background-color: #fff;
+          &__content{
+            padding: 40px 40px 64px;
+            
+            a.default__btn{
+              width: 343px;
+              line-height: 50px;
+              border: solid 1px;
+              border-radius: 7px;
+              margin: 16px 0 0;          
+              display: block;
+              text-decoration: none;
+              margin:  0 auto;
+              &--mail{
+                color:#fff;
+                background-color: #ea352d;
+                position: relative;
+                i{
+                  position: absolute;
+                  width: 20px;
+                  height: 20px;
+                  top:30%;
+                  left:16px;
+                }
+              }
+              &__sns{
+                height: 50px;
+                width: 343px;
+                margin-top: 16px;
+                &--google{
+                  background-color: #fff;
+                  color:#333;
+                  border: solid 1px #888;
+                  position: relative;
+                }
+                &--facebook{
+                  background-color: #385185;
+                  color:#fff;
+                  border: none;
+                  position: relative;
+                }
+                &--apple{
+                  background-color: #000;
+                  color:#fff;
+                  border: none;
+                  position: relative;
+                }
+                  i{
+                    position: absolute;
+                    top:30%;
+                    left:16px;
+                  }
+               }
+             }
+            .form__group{
+              height: 42px;
+              width: 343px;
+              margin: 0 auto;
+              &__text{
+                margin-top: 40px;
+                display: block;
+                color:#888;
+                text-align: left;
+                a{
+                  color:#0099e8;
+                }
+              }
+            }
           
+          }
+        
         }
+     }
+    
+    .footer01{
+      height: 220px;
+      width: 456px;
+      padding: 40px 0;
+      margin: 0 auto;
+      text-align: center;
+      .nav{
+        font-size: 15px;
+        padding-bottom:30px ;
+        ul{
+          display: flex;
+          li{
+            justify-content: space-between;
+            padding:0 5px;
+            a{
+              text-decoration: none;
+              color:#333;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+      a{
+        .footer01__logo__btn{
+          width: 120px;
+          height: 40px;
+        }
+      }
+      p{
+        font-size: 12px;
+        padding-top:15px ;
+        color: #333;
       }
     }
   }
-}
