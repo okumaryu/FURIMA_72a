@@ -4,7 +4,11 @@ p{
 }
 
 .banner{
+<<<<<<< HEAD
   background-image: url(/assets/bg-appBanner-pict.jpg);
+=======
+  background-image: image-url('bg-appBanner-pict.jpg');
+>>>>>>> origin
   padding: 100px 40px;
   position: relative;
   background-size: cover;
@@ -66,9 +70,15 @@ p{
     }
   }
   .footer-logo{
+<<<<<<< HEAD
     width: 100%;
     margin: 0 auto;
     background-color: #272727;
+=======
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+>>>>>>> origin
     img{
       width: 100%;
       vertical-align: bottom;
@@ -76,7 +86,10 @@ p{
     }
     .footer-mark{
       font-size: 14px;
+<<<<<<< HEAD
       background-color: #272727;
+=======
+>>>>>>> origin
     }
   }
 a{
