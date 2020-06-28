@@ -2,3 +2,19 @@
   .header01
     .header01__logo
       = image_tag '/assets/logo.png', alt: '', class: 'header01__logo__btn'
+
+  .login
+    .login--no__acount
+      %p アカウントをお持ちでない方
+      %a(href="#")新規会員登録
+    = link_to "#", class: "default__btn default__btn__sns default__btn__sns--google" do
+      = icon('fab', 'google',  class: "contents__btn--icon")
+      Googleでログイン
+    = link_to "#", class: "default__btn default__btn__sns default__btn__sns--facebook" do
+      = icon('fab', 'facebook-square',  class: "contents__btn--icon")
+      Facebookでログイン
+    = link_to "#", class: "default__btn default__btn__sns default__btn__sns--apple" do
+      = icon('fab', 'apple',  class: "contents__btn--icon")
+      Appleでログイン
+      
+      
