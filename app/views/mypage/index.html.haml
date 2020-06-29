@@ -118,6 +118,53 @@
             = link_to "#" do
               ログアウト
               = icon('fas', 'chevron-right')
-      
+
+    .mypage-content
+      .mypage-content__user-icon
+        = link_to "#" do
+          = image_tag asset_path('member_photo_noimage_thumb.png'), type: '', alt: '', height: '60', width: '60'
+          %h2 UserName
+          .mypage-count
+            %div
+              評価
+              %span 
+                0
+            %div
+              出品数
+              %span 
+                0
+      %section.mypage-content__notification-todo
+        %ul.mypage-tabs
+          %li
+            %h2
+              = link_to "#" do
+                お知らせ
+          %li.active
+            %h2
+              = link_to "#" do
+                やることリスト
+        .tab-content
+          %ul.mypage-item-list
+            %li 現在、やることリストはありません
+      %section.mypage-content__tab-container
+        %h2 購入した商品
+        %ul.mypage-tabs
+          %li.active
+            %h2
+              = link_to "#" do
+                取引中
+          %li
+            %h2
+              = link_to "#" do
+                過去の取引
+        .tab-content
+          %ul.mypage-item-list
+            %li 取引中の商品がありません
+          
+
+
+
+
+
 
 = render "/shared/footer"

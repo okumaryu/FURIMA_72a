@@ -44,9 +44,12 @@ body {
   background: #f8f8f8;
   overflow: hidden;
   .mypage-top{
-    margin: 40px 0 0 120px;
+    @include clearfix();
+    margin: 40px auto 0;
+    width: 1020px;
     padding-bottom: 40px;
     .mypage-side-bar{
+      float: left;
       width: 280px;
       .mypage-nav{
         &__list li{
@@ -55,7 +58,7 @@ body {
             text-decoration: none;
             position: relative;
             display: block;
-            min-height: 48px;
+            height: 50px;
             padding: 16px;
             background: #fff;
             font-size: 14px;
@@ -92,6 +95,155 @@ body {
         &__head-title{
           font-size: 16px;
           margin: 40px 0 0;
+        }
+      }
+    }
+    .mypage-content{
+      float: right;
+      width: 700px;
+      &__user-icon{
+        height: 200px;
+        position: relative;
+        padding: 20px;
+        background: linear-gradient(-135deg, #eee, #3CCACE);
+        text-align: center;
+        a{
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+          color: #333;
+          text-decoration: none;
+        }
+        h2{
+          margin: 8px 0 0;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .mypage-count{
+          margin: 8px 0 0;
+          font-size: 0;
+          div{
+            display: inline-block;
+            font-size: 14px;
+          }
+          span{
+            margin: 0 0 0 8px;
+            font-size: 16px;
+            font-weight: 600;
+          }
+          div+div{
+            margin: 0 0 0 16px;
+          }
+        }
+      }
+      &__notification-todo{
+        margin: 0;
+        background: #fff;
+        .mypage-tabs{
+          border: 0;
+          background: #eee;
+          font-size: 0;
+          li{
+            width: 50%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            h2{
+              font-size: 22px;
+              a{
+                position: relative;
+                display: block;
+                color: #333;
+                font-size: 16px;
+                line-height: 72px;
+                text-decoration: none;
+              }
+            }
+          }
+          .active{
+            background: #fff;
+          }
+          .active a{
+            border-top: 2px solid #3CCACE;
+          }
+        }
+        .tab-content{
+          .mypage-item-list{
+            display: block;
+            li{
+              border: 0;
+              position: relative;
+              padding: 160px 0 60px;
+              background: image-url('logo.png');
+              background-repeat: no-repeat;
+              background-position: center 40px;
+              background-size: 300px 100px;
+              text-align: center;
+              font-size: 16px;
+              color: #ccc;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      &__tab-container{
+        margin: 40px 0 0;
+        background: #fff;
+        h2{
+          padding: 0 16px;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        .mypage-tabs{
+          border: 0;
+          background: #eee;
+          font-size: 0;
+          li{
+            width: 50%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            h2{
+              font-size: 22px;
+              padding: 0;
+              a{
+                position: relative;
+                display: block;
+                color: #333;
+                font-size: 16px;
+                line-height: 72px;
+                text-decoration: none;
+              }
+            }
+          }
+          .active{
+            background: #fff;
+          }
+          .active a{
+            border-top: 2px solid #3CCACE;
+          }
+        }
+        .tab-content{
+          .mypage-item-list{
+            display: block;
+            li{
+              border: 0;
+              position: relative;
+              padding: 160px 0 60px;
+              background: image-url('logo.png');
+              background-repeat: no-repeat;
+              background-position: center 40px;
+              background-size: 300px 100px;
+              text-align: center;
+              font-size: 16px;
+              color: #ccc;
+              font-weight: 600;
+            }
+          }
         }
       }
     }
