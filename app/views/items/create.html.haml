@@ -25,7 +25,7 @@
               商品名
               %label.sign
                 必須
-            %input{:size => "67px"}
+            %input.style__formLabel
         .commodity__detail
           .style_formLabel
             %p
@@ -39,21 +39,21 @@
             カテゴリー
             %label.sign
               必須
-          %select{:name => "category"}
-            %option{:value => "0"} 選択してください
-            %option{:value => "1"} レディース
-            %option{:value => "2"} メンズ
-            %option{:value => "3"} ベビー・キッズ
-            %option{:value => "4"} インテリア・住まい・小物
-            %option{:value => "5"} 本・音楽・ゲーム
-            %option{:value => "6"} おもちゃ・ホビー・グッズ
-            %option{:value => "7"} コスメ・香水・美容
-            %option{:value => "8"} 家電・スマホ・カメラ
-            %option{:value => "9"} スポーツ・レジャー
-            %option{:value => "10"} ハンドメイド
-            %option{:value => "11"} チケット
-            %option{:value => "12"} 自動車・オートバイ
-            %option{:value => "13"} その他
+          %select{name: "category"}
+            %option{value:  "0"} 選択してください
+            %option{value: "1"} レディース
+            %option{value: "2"} メンズ
+            %option{value: "3"} ベビー・キッズ
+            %option{value: "4"} インテリア・住まい・小物
+            %option{value: "5"} 本・音楽・ゲーム
+            %option{value: "6"} おもちゃ・ホビー・グッズ
+            %option{value: "7"} コスメ・香水・美容
+            %option{value: "8"} 家電・スマホ・カメラ
+            %option{value: "9"} スポーツ・レジャー
+            %option{value: "10"} ハンドメイド
+            %option{value: "11"} チケット
+            %option{value: "12"} 自動車・オートバイ
+            %option{value: "13"} その他
         .style_formLabel
           %p
             ブランド
@@ -63,30 +63,30 @@
             商品の状態
             %label.sign
               必須
-          %select{:name => "category"}
-            %option{:value => "0"} 選択してください
-            %option{:value => "1"} 新品、未使用に近い
-            %option{:value => "2"} 目立った傷や汚れなし
-            %option{:value => "3"} やや汚れあり
-            %option{:value => "4"} 傷や汚れあり
-            %option{:value => "5"} 全体的に状態が悪い
+          %select{name: "category"}
+            %option{value: "0"} 選択してください
+            %option{value: "1"} 新品、未使用に近い
+            %option{value: "2"} 目立った傷や汚れなし
+            %option{value: "3"} やや汚れあり
+            %option{value: "4"} 傷や汚れあり
+            %option{value: "5"} 全体的に状態が悪い
       .delivery
         .style_formLabel
           %p
             配送料金の負担
             %label.sign
               必須
-          %select{:name => "status"}
-            %option{:value => "0"} 選択してください
-            %option{:value => "1"} 送料込み(出品者負担)
-            %option{:value => "2"} 着払い(購入者負担)
+          %select{name: "status"}
+            %option{value: "0"} 選択してください
+            %option{value: "1"} 送料込み(出品者負担)
+            %option{value: "2"} 着払い(購入者負担)
         .style_formLabel
           %p
             発送元の地域
             %label.sign
               必須
-          %select{:name => "region"}
-            %option{:value => "0"} 選択してください
+          %select{name: "region"}
+            %option{ value: "0"} 選択してください
             %option{ value: "1"} 北海道
             %option{ value: "2"} 青森県
             %option{ value: "3"} 岩手県
@@ -134,17 +134,17 @@
             %option{ value: "45"} 宮崎県
             %option{ value: "46"} 鹿児島県
             %option{ value: "47"} 沖縄県
-            %option{:value => "48"} その他 
+            %option{ value: "48"} その他 
         .style_formLabel
           %p
             発送までの日数
             %label.sign
               必須
           %select{:name => "shippingDuration"}
-            %option{:value => "0"} 選択してください
-            %option{:value => "1"} 1~2日
-            %option{:value => "2"} 2~3日
-            %option{:value => "3"} 4~7日
+            %option{value:"0"} 選択してください
+            %option{value:"1"} 1~2日
+            %option{value:"2"} 2~3日
+            %option{value:"3"} 4~7日
       .price
         .price__celect
           %label
@@ -153,7 +153,7 @@
             必須
           .price__celect__plate
             ￥
-          %input{:type => "number", :value => "0",:class => "profit"}
+          %input{type: "number", value: "0",class: "profit"}
         .price__fee
           %p
             販売手数料

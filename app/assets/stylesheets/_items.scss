@@ -16,6 +16,9 @@
 }
 .style_formLabel{
   padding: 3%;
+  &input{
+    size: 64px;
+  }
 }
 p{
   margin-bottom:5px ;
