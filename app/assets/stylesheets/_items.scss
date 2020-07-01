@@ -71,21 +71,21 @@ p{
   justify-content: space-between;
   padding: 0px 40px;
 }
-.button{
+.buttons{
   text-align: center;
   margin: 80px;
-  height: 4%;
   &__sell{
     height: 40px;
     background-color: red;
   }
   &__save{
-    margin-top: 10px;
-    height: 40px;
+    margin-top: 5%;
     background-color: #cccccc;
+    height: 40px;
   }
   &__back{
     text-align: center;
+    margin-top: 5%;
   }
 }
 .items{
