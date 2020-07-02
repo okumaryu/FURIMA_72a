@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'products#index'
-  root 'items#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :products, only[:index, :show] do
+  resources :items, only[:new, :create] 
+  end
 end
+  
