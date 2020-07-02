@@ -3,4 +3,6 @@ class ItemsController < ApplicationController
   end
   def get
   end
+  def show
+  end
 end
