@@ -1,20 +1,28 @@
 .container01
-  .header01
-    .header01__logo
-      = image_tag '/assets/logo.png', alt: '', class: 'header01__logo__btn'
-
+  = render "/shared/header01"
+  
   .login
-    .login--no__acount
-      %p アカウントをお持ちでない方
-      %a(href="#")新規会員登録
-    = link_to "#", class: "default__btn default__btn__sns default__btn__sns--google" do
-      = icon('fab', 'google',  class: "contents__btn--icon")
-      Googleでログイン
-    = link_to "#", class: "default__btn default__btn__sns default__btn__sns--facebook" do
-      = icon('fab', 'facebook-square',  class: "contents__btn--icon")
-      Facebookでログイン
-    = link_to "#", class: "default__btn default__btn__sns default__btn__sns--apple" do
-      = icon('fab', 'apple',  class: "contents__btn--icon")
-      Appleでログイン
-      
-      
+    .login__content
+      .login__content--no__acount
+        %p アカウントをお持ちでない方
+        %a(href="#")新規会員登録
+      .login__content__form
+        = link_to "#", class: "default__btn default__btn--google" do
+          = icon('fab', 'google',  class: "contents__btn--icon")
+          Googleでログイン
+        = link_to "#", class: "default__btn default__btn--facebook" do
+          = icon('fab', 'facebook-square',  class: "contents__btn--icon")
+          Facebookでログイン
+        = link_to "#", class: "default__btn default__btn--apple" do
+          = icon('fab', 'apple',  class: "contents__btn--icon")
+          Appleでログイン
+      .login__content__form
+        .login__content__form__group
+          %input.login__input__text{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
+        .login__content__form__group
+          %input.login__input__text{name: "password", placeholder: "パスワード", type: "password", value: ""}
+        .login__content__form__group
+          %button{type: "submit", class: 'login__btn'}
+            ログイン
+
+  = render "/shared/footer01"

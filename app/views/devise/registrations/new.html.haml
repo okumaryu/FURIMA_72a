@@ -1,8 +1,5 @@
-
 .container01
-  .header01
-    .header01__logo
-      = image_tag '/assets/logo.png', alt: '', class: 'header01__logo__btn'
+  = render "/shared/header01"
 
   .main01
     .main01__container
@@ -29,3 +26,5 @@
               と
               %a{href: '#'}プライバシーポリシー
               に同意したものとみなされます。
+
+  = render "/shared/footer01"
