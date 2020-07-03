@@ -13,23 +13,32 @@
 ActiveRecord::Schema.define(version: 2020_07_03_070956) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.string "ancestry", null: false
   end
 
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "url", null: false
+    t.integer "product_id", null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.text "description", null: false
+    t.integer "brand_id"
+    t.string "category_id", null: false
+    t.integer "size_id", null: false
+    t.integer "product_condition_id", null: false
+    t.integer "prefecture_code", null: false
+    t.integer "postage_payer_id", null: false
+    t.integer "shipping_date_id", null: false
+    t.integer "seller_id", null: false
+    t.integer "buyer_id", null: false
   end
 
 end

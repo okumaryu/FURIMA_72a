@@ -25,7 +25,10 @@
               商品名
               %label.sign
                 必須
-            %input.style__formLabel
+            = form_for items_path @product do |f|
+              = f.text_field :name 
+              
+  
         .commodity__detail
           .style_formLabel
             %p
