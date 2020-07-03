@@ -1,0 +1,2 @@
+class Productphoto < ApplicationRecord
+end
