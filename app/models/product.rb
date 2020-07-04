@@ -10,4 +10,6 @@ class Product < ApplicationRecord
   #has_many :comments, dependent: :destroy
   #belongs_to :seller, class_name: "User"
   #belongs_to :buyer, class_name: "User"
+  #extend ActiveHash::Associations::ActiveRecordExtensions
+  #has_many :postage_payer
 end
