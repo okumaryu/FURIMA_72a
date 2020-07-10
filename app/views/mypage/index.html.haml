@@ -9,7 +9,7 @@
     %li
       = icon('fas', 'angle-right')
     %li 
-      = link_to "mypage_index_path" do
+      = link_to mypage_index_path do
         マイページ
 
 %main.mypage-main
@@ -18,7 +18,7 @@
       .mypage-nav
         %ul.mypage-nav__list
           %li
-            = link_to "mypage_index_path", class: "active" do
+            = link_to mypage_index_path, class: "active" do
               マイページ
               = icon('fas', 'chevron-right', class: "active")
           %li
@@ -115,7 +115,7 @@
               電話番号の確認
               = icon('fas', 'chevron-right')
           %li
-            = link_to "logout_path" do
+            = link_to mypage_logout_path do
               ログアウト
               = icon('fas', 'chevron-right')
 
