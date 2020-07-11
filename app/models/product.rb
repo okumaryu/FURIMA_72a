@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   #belongs_to :postage_payer
   #belongs_to :shipping_date
   has_many :productphotos, dependent: :destroy
-  accepts_nested_attributes_for :productphotos
+  accepts_nested_attributes_for :productphotos, allow_destroy: true
   #has_many :likes, dependent: :destroy
   #has_many :comments, dependent: :destroy
   #belongs_to :seller, class_name: "User"

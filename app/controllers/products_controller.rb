@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
 
   def create
      @product = Product.new(product_params)
+     binding.pry
     if @product.save!
       redirect_to root_path
     else
@@ -22,6 +23,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-   params.require(:product).permit(:name,:description)
+   params.require(:product).permit(:name,:description,productphoto_attributes: [:src])
   end
 end
