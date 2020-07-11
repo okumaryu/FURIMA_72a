@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_070956) do
   end
 
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "url", null: false
+    t.string "src", null: false
     t.bigint "product_id"
     t.index ["product_id"], name: "index_productphotos_on_product_id"
   end
