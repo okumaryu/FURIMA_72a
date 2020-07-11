@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root 'mypage#index'
   resources :items, only: [:new, :create] do
   end
-    resources :users, only: [:new]
+    resources :users, only: [:new,:edit,:update]
 end
