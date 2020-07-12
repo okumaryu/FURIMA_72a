@@ -13,4 +13,6 @@ class Product < ApplicationRecord
   #belongs_to :buyer, class_name: "User"
   #extend ActiveHash::Associations::ActiveRecordExtensions
   #has_many :postage_payer
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
 end
