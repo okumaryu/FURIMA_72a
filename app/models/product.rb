@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :productcondition
   #belongs_to :brand
   #belongs_to :category
   #belongs_to_active_hash :size
