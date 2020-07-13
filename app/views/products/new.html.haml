@@ -28,7 +28,6 @@
                 商品名
                 %label.sign
                   必須
-
                 = f.text_field :name 
           .commodity__detail
             .style_formLabel
@@ -38,32 +37,19 @@
                   必須
                 = f.text_area :description, class: "commodity__detail__description"
         .details
-          .identification__form__field
-            = form_for '' do |f|
-              .identification__form__field
-                %span.identification__form__field__label カテゴリー
-
-                %span.identification__form__field__arbitrary 必須
-
-                .identification__form__field--input.icon-relative
-                  = f.collection_select :category_id, Category.all, :id, :category, class: 'input'
-                  
-          .style_formLabel
-            %p
-              ブランド
-            %input
-          .style_formLabel
-            %p
-              商品の状態
-              %label.sign
-                必須
-            %select{name: "category"}
-              %option{value: "0"} 選択してください
-              %option{value: "1"} 新品、未使用に近い
-              %option{value: "2"} 目立った傷や汚れなし
-              %option{value: "3"} やや汚れあり
-              %option{value: "4"} 傷や汚れあり
-              %option{value: "5"} 全体的に状態が悪い
+          .identification__form__field           
+            .identification__form__field
+              %span.identification__form__field__label カテゴリー
+              %span.identification__form__field__arbitrary 必須
+              .identification__form__field--input.icon-relative
+                = f.collection_select :category_id, Category.all, :id, :category, class: 'input'
+                
+          .identification__form__field           
+            .identification__form__field
+              %span.identification__form__field__label 商品の状態
+              %span.identification__form__field__arbitrary 必須
+              .identification__form__field--input.icon-relative
+                = f.collection_select :productcondition_id, Productcondition.all, :id, :name, class: 'input' 
         .delivery
           .style_formLabel
             %p
