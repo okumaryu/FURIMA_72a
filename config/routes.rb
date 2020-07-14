@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   end
 
   get 'logout', to: 'mypage#logout'
+  get 'credit', to: 'mypage#credit'
 
   devise_for :users 
 

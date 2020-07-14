@@ -14,8 +14,7 @@
     %li
       = icon('fas', 'angle-right')
     %li 
-      ログアウト
-
+      支払い方法
 %main.mypage-main
   .mypage-top
     .mypage-side-bar
@@ -123,9 +122,20 @@
               ログアウト
               = icon('fas', 'chevron-right')
     .mypage-content
-      .mypage-content__logout
-        %form(action="#")
-          .mypage-content__logout-btn
-            %button{type: "submit", class:'logout-btn'} ログアウト
+      .mypage-content__credit
+        %h2 支払い方法
+        .mypage-content__credit-inner
+          %section
+            .credit-inner__content
+              %h3 クレジットカード一覧
+          %section.credit-inner__add-card
+            .credit-inner__card-btn
+              = link_to "#" do
+                = icon('fas', 'credit-card')
+                クレジットカードを追加する
+          .credit-inner__setting-regist
+            = link_to "#" do
+              %span 支払い方法について
+              = icon('fas', 'chevron-right')
 
 = render "/shared/footer"
