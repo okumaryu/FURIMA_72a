@@ -9,8 +9,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer	:size_id#,null: false, foreign_key: true
       t.integer	:productcondition_id#,	null: false, foreign_key: true
       t.integer	:prefecture_code#, null: false
-      t.integer	:postage_payer_id#, null: false, foreign_key: true
-      t.integer	:shipping_date_id#, null:false, foreign_key: true
+      t.integer	:postagepayer_id#, null: false, foreign_key: true
+      t.integer	:shippingdate_id#, null:false, foreign_key: true
       t.integer	:seller_id#, null: false, foreign_key: true
       t.integer	:buyer_id#, null: false, foreign_key: true
     end
