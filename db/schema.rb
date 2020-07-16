@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_105701) do
+ActiveRecord::Schema.define(version: 2020_07_13_033356) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "ancestry", null: false
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_brands_on_product_id"
   end
 
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -33,14 +32,15 @@ ActiveRecord::Schema.define(version: 2020_07_14_105701) do
     t.text "description"
     t.integer "brand_id"
     t.integer "size_id"
+    t.integer "productcondition_id"
     t.integer "prefecture_id"
     t.integer "postagepayer_id"
     t.integer "shippingdate_id"
     t.integer "seller_id"
     t.integer "buyer_id"
     t.integer "category_id"
-    t.integer "productcondition_id"
   end
 
+  add_foreign_key "brands", "products"
   add_foreign_key "productphotos", "products"
 end
