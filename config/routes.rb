@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :mypage, only: [:index] do
+    collection do
+      get :logout
+      get :credit
+    end
   end
-
-  get 'logout', to: 'mypage#logout'
 
   devise_for :users 
 
@@ -10,5 +12,5 @@ Rails.application.routes.draw do
 
   resources :items, only: [:new, :create] do
   end
-    resources :users, only: [:new]
+  resources :users, only: [:new]
 end

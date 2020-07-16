@@ -11,7 +11,10 @@
     %li 
       = link_to mypage_index_path do
         マイページ
-
+    %li
+      = icon('fas', 'angle-right')
+    %li 
+      支払い方法
 %main.mypage-main
   .mypage-top
     .mypage-side-bar
@@ -118,47 +121,21 @@
             = link_to logout_mypage_index_path do
               ログアウト
               = icon('fas', 'chevron-right')
-
     .mypage-content
-      .mypage-content__user-icon
-        = link_to "#" do
-          = image_tag asset_path('member_photo_noimage_thumb.png'), type: '', alt: '', height: '60', width: '60'
-          %h2 UserName
-          .mypage-count
-            %div
-              評価
-              %span 
-                0
-            %div
-              出品数
-              %span 
-                0
-      %section.mypage-content__notification-todo
-        %ul.mypage-tabs
-          %li
-            %h2
+      .mypage-content__credit
+        %h2 支払い方法
+        .mypage-content__credit-inner
+          %section
+            .credit-inner__content
+              %h3 クレジットカード一覧
+          %section.credit-inner__add-card
+            .credit-inner__card-btn
               = link_to "#" do
-                お知らせ
-          %li.active
-            %h2
-              = link_to "#" do
-                やることリスト
-        .tab-content
-          %ul.mypage-item-list
-            %li 現在、やることリストはありません
-      %section.mypage-content__tab-container
-        %h2 購入した商品
-        %ul.mypage-tabs
-          %li.active
-            %h2
-              = link_to "#" do
-                取引中
-          %li
-            %h2
-              = link_to "#" do
-                過去の取引
-        .tab-content
-          %ul.mypage-item-list
-            %li 取引中の商品がありません
-          
+                = icon('fas', 'credit-card')
+                クレジットカードを追加する
+          .credit-inner__setting-regist
+            = link_to "#" do
+              %span 支払い方法について
+              = icon('fas', 'chevron-right')
+
 = render "/shared/footer"
