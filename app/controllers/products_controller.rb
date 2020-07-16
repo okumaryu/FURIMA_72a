@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.productphotos.new
+    @product.brands.new
   end
 
   def create
@@ -22,6 +23,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-   params.require(:product).permit(:name,:description,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,productphotos_attributes: [:src])
+   params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src],brands_attributes: [:name])
   end
 end

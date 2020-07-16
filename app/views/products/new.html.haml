@@ -43,7 +43,10 @@
               %span.identification__form__field__arbitrary 必須
               .identification__form__field--input.icon-relative
                 = f.collection_select :category_id, Category.all, :id, :category, class: 'input'
-                
+          = f.fields_for :brand do |f|
+            %span ブランド
+            %span.form-require-gray 任意
+            = f.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
           .identification__form__field           
             .identification__form__field
               %span.identification__form__field__label 商品の状態
@@ -52,40 +55,30 @@
                 = f.collection_select :productcondition_id, Productcondition.all, :id, :name, class: 'input' 
         .delivery
           .style_formLabel
-            %p
-              配送料金の負担
-              %label.sign
-                必須
-            %select{name: "status"}
-              %option{value: "0"} 選択してください
-              %option{value: "1"} 送料込み(出品者負担)
-              %option{value: "2"} 着払い(購入者負担)
-          .style_formLabel
-            %span.identification__form__field__lavel 都道府県 
-            %span.identification__form__field__arbitrary 任意 
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: 'input'
+            %span.identification__form__field__lavel 料金の負担 
+            %span.identification__form__field__arbitrary 必須
+            = f.collection_select :postagepayer_id, Postagepayer.all, :id, :name, prompt: "選択してください", class: 'input'
             .style_formLabel
-              %p
-                発送までの日数
-                %label.sign
-                  必須
-              %select{:name => "shippingDuration"}
-                %option{value:"0"} 選択してください
-                %option{value:"1"} 1~2日
-                %option{value:"2"} 2~3日
-                %option{value:"3"} 4~7日
+          .style_formLabel
+            %span.identification__form__field__lavel 発送元の地域
+            %span.identification__form__field__arbitrary 必須
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+          .style_formLabel
+            %span.identification__form__field__lavel 発送までの日数
+            %span.identification__form__field__arbitrary 必須
+            = f.collection_select :shippingdate_id, Shippingdate.all, :id, :name, prompt: "選択してください", class: 'input'
           .price
             .price__celect
-              %label
+              %span
                 販売価格
               %label.sign
                 必須
               .price__celect__plate
                 ￥
-              %input{type: "number", value: "0",class: "profit"}
+              = f.number_field :price
             .price__fee
               %p
-                販売手数料
+                販売手数料 (10%)
               %p
                 ー
           .bottom
@@ -96,7 +89,7 @@
                 ー  
             .buttons    
 
-        = f.submit class: "buttons__sell"
+              = f.submit class: "buttons__sell"
 //              出品する
 //            .buttons__save
 //              下書きに保存
