@@ -26,6 +26,17 @@ $(document).on('turbolinks:load', ()=> {
   $('.image-box').on('click', '.js-remove', function() {
     $(this).parent().remove();
     // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    if ($('.js-file').length == 0) $('.image-box').append(buildFileField(fileIndex[0]));
   });
+  let input = document.querySelector('#product_price');
+  const log = document.getElementById('handlefee');
+  const profit = document.getElementById('profit');
+  input.addEventListener('input', updateValue);
+    function updateValue(e) {
+      let val1 = parseInt(input.value, 10);
+      let output = val1 * 0.1
+      let gain = val1 - output
+      log.textContent = output;
+      profit.textContent = gain;
+  }
 });
