@@ -58,9 +58,9 @@
               = f.collection_select :productcondition_id, Productcondition.all, :id, :name, class: 'input' 
         .delivery
           .style_formLabel
-            %span.identification__form__field__lavel 料金の負担 
+            %span.identification__form__field__lavel 発送料金の負担 
             %span.identification__form__field__arbitrary 必須
-            = f.collection_select :postagepayer_id, Postagepayer.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select :postagepayer_id, Postagepayer.all, :id, :name, class: 'input'
           .style_formLabel
             %span.identification__form__field__lavel 発送元の地域
             %span.identification__form__field__arbitrary 必須
@@ -68,7 +68,7 @@
           .style_formLabel
             %span.identification__form__field__lavel 発送までの日数
             %span.identification__form__field__arbitrary 必須
-            = f.collection_select :shippingdate_id, Shippingdate.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select :shippingdate_id, Shippingdate.all, :id, :name, class: 'input'
           .price
             .price__celect
               .labels
