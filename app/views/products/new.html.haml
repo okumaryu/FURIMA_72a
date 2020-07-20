@@ -14,16 +14,16 @@
               %p
               最大１０枚までアップロードできます
             .image-box
-              = icon('fas', 'camera')
-              %p
-                ドラックアンドドロップ
-              %p
-                またはクリックしてファイルをダウンロード 
               #image-box_id
-                = f.fields_for :productphotos do |image|
-                  .js-file_group{"data-index" => "#{image.index}"}
-                    = f.file_field :src, class: 'js-file'
-
+                %label    
+                  %i.fas.fa-camera
+                  = f.fields_for :productphotos do |image|
+                    .js-file_group{"data-index" => "#{image.index}"}
+                      = f.file_field :src, class: 'js-file'
+                  %p
+                    ドラックアンドドロップ
+                  %p
+                    またはクリックしてファイルをダウンロード 
         .commodity
           .commodity__name
             .style_formLabel
@@ -40,28 +40,27 @@
                   必須
                 = f.text_area :description, class: "commodity__detail__description"
         .details
-          .identification__form__field           
-            .identification__form__field
-              %span.identification__form__field__label カテゴリー
-              %span.identification__form__field__arbitrary 必須
-              .identification__form__field--input.icon-relative
-                = f.collection_select :category_id, Category.all, :id, :category, class: 'input'
-          = f.fields_for :brand do |f|
-            %span ブランド
-            %span.form-require-gray 任意
-            = f.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
-          .identification__form__field           
-            .identification__form__field
-              %span.identification__form__field__label 商品の状態
-              %span.identification__form__field__arbitrary 必須
-              .identification__form__field--input.icon-relative
-                = f.collection_select :productcondition_id, Productcondition.all, :id, :name, class: 'input' 
+          .style_formLabel
+            %span.identification__form__field__label カテゴリー
+            %span.identification__form__field__arbitrary 必須
+            .identification__form__field--input.icon-relative
+              = f.collection_select :category_id, Category.all, :id, :category, class: 'input'
+          .details__brand
+            = f.fields_for :brand do |f|
+              %span ブランド
+              %span.form-require-gray 任意
+              = f.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
+                    
+          .style_formLabel
+            %span.identification__form__field__label 商品の状態
+            %span.identification__form__field__arbitrary 必須
+            .identification__form__field--input.icon-relative
+              = f.collection_select :productcondition_id, Productcondition.all, :id, :name, class: 'input' 
         .delivery
           .style_formLabel
             %span.identification__form__field__lavel 料金の負担 
             %span.identification__form__field__arbitrary 必須
             = f.collection_select :postagepayer_id, Postagepayer.all, :id, :name, prompt: "選択してください", class: 'input'
-            .style_formLabel
           .style_formLabel
             %span.identification__form__field__lavel 発送元の地域
             %span.identification__form__field__arbitrary 必須
@@ -72,10 +71,11 @@
             = f.collection_select :shippingdate_id, Shippingdate.all, :id, :name, prompt: "選択してください", class: 'input'
           .price
             .price__celect
-              %span
-                販売価格
-              %label.sign
-                必須
+              .labels
+                %p.identification__form__field__lavel 
+                  販売価格
+                %p.identification__form__field__arbitrary 
+                  必須
               .price__celect__plate
                 ￥
               = f.number_field :price
@@ -97,12 +97,10 @@
                 
             .buttons    
 
-              = f.submit class: "buttons__sell"
-//              出品する
-//            .buttons__save
-//              下書きに保存
-//            =link_to "#"do
-//              .buttons__back もどる
-//        .warning
-//          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+              = f.submit class: "buttons__sell", value:"出品する"
+              .buttons__save 下書きに保存
+              =link_to "#"do
+                .buttons__back もどる
+              .warning
+                禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 = render "/shared/footer02" 

@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file" type="file"
+                    <input class="js-files" type="file"
                     name=product[productphotos_attributes][${index}][src]"
                     id="product_productphotos_attributes_${index}_src"><br>
                     <div class="js-remove">削除</div>
@@ -22,6 +22,7 @@ $(document).on('turbolinks:load', ()=> {
     // 末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   });
+
 
   $('.image-box').on('click', '.js-remove', function() {
     $(this).parent().remove();
