@@ -1,0 +1,131 @@
+.container
+  = render "/shared/header"
+
+%nav.nav-crumbs
+  %ul
+    %li 
+      = link_to "#" do
+        FURIMA
+    %li
+      = icon('fas', 'angle-right')
+    %li 
+      = link_to mypage_index_path do
+        マイページ
+    %li
+      = icon('fas', 'angle-right')
+    %li 
+      ログアウト
+
+%main.mypage-main
+  .mypage-top
+    .mypage-side-bar
+      .mypage-nav
+        %ul.mypage-nav__list
+          %li
+            = link_to mypage_index_path, class: "active" do
+              マイページ
+              = icon('fas', 'chevron-right', class: "active")
+          %li
+            = link_to "#" do
+              お知らせ
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              やることリスト
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              いいね！一覧
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              出品する
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              下書き一覧
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              出品した商品ー出品中
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              出品した商品ー取引中
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              出品した商品ー売却済み
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              購入した商品ー取引中
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              購入した商品ー過去の取引
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              ニュース一覧
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              評価一覧
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              ガイド
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              お問い合わせ
+              = icon('fas', 'chevron-right')
+        %h2.mypage-nav__head-title
+          メルペイ
+        %ul.mypage-nav__list
+          %li
+            = link_to "#" do
+              残高・振込申請
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              ポイント
+              = icon('fas', 'chevron-right')
+          %h2.mypage-nav__head-title
+            設定
+          %li
+            = link_to "#" do
+              プロフィール
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              発送元・お届け先住所変更
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to credit_mypage_index_path do
+              支払い方法
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              メール/パスワード
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              本人情報
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to "#" do
+              電話番号の確認
+              = icon('fas', 'chevron-right')
+          %li
+            = link_to logout_mypage_index_path do
+              ログアウト
+              = icon('fas', 'chevron-right')
+    .mypage-content
+      .mypage-content__logout
+        %form(action="#")
+          .mypage-content__logout-btn
+            %button{type: "submit", class:'logout-btn'} ログアウト
+
+= render "/shared/footer"

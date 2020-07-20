@@ -1,0 +1,34 @@
+  .footer01{
+    height: 220px;
+    width: 456px;
+    padding: 60px 0 0;
+    margin: 0 auto;
+    text-align: center;
+    .nav{
+      font-size: 15px;
+      padding-bottom:30px ;
+      ul{
+        display: flex;
+        li{
+          justify-content: space-between;
+          padding:0 5px;
+          a{
+            text-decoration: none;
+            color:#333;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+    a{
+      img{
+        width: 120px;
+        height: 40px;
+      }
+    }
+    p{
+      font-size: 12px;
+      padding-top:15px ;
+      color: #333;
+    }
+  }
