@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  validates :name,:description,:price,:brand_id,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id, presence: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   extend ActiveHash::Associations::ActiveRecordExtensions
