@@ -21,9 +21,9 @@
       .mypage-nav
         %ul.mypage-nav__list
           %li
-            = link_to mypage_index_path, class: "active" do
+            = link_to mypage_index_path do
               マイページ
-              = icon('fas', 'chevron-right', class: "active")
+              = icon('fas', 'chevron-right')
           %li
             = link_to "#" do
               お知らせ
@@ -102,9 +102,9 @@
               発送元・お届け先住所変更
               = icon('fas', 'chevron-right')
           %li
-            = link_to credit_mypage_index_path do
+            = link_to credit_mypage_index_path, class: "active" do
               支払い方法
-              = icon('fas', 'chevron-right')
+              = icon('fas', 'chevron-right', class: "active")
           %li
             = link_to "#" do
               メール/パスワード
