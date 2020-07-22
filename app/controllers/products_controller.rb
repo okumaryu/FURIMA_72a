@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
 
   def show
   end
+  def destroy
+  @product.destroy
+  redirect_to root_path
+  end
   
   def new
     @product = Product.new
