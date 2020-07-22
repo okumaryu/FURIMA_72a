@@ -93,6 +93,5 @@ gem 'fog-aws' #参考：https://master.tech-camp.in/curriculums/3967
 gem 'ancestry' #カテゴリにて必要。参考：https://github.com/stefankroes/ancestry
 gem 'jquery-rails' #非同期用
 gem 'jp_prefecture'
-
-
+gem 'active_hash'
 gem 'devise' #ログイン機能で必要。参考：https://master.tech-camp.in/curriculums/3641

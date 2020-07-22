@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_135331) do
+ActiveRecord::Schema.define(version: 2020_07_13_033356) do
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_brands_on_product_id"
+  end
+
+  create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "src", null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_productphotos_on_product_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price"
+    t.text "description"
+    t.integer "brand_id"
+    t.integer "size_id"
+    t.integer "productcondition_id"
+    t.integer "prefecture_id"
+    t.integer "postagepayer_id"
+    t.integer "shippingdate_id"
+    t.integer "seller_id"
+    t.integer "buyer_id"
+    t.integer "category_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,4 +53,6 @@ ActiveRecord::Schema.define(version: 2020_06_18_135331) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "brands", "products"
+  add_foreign_key "productphotos", "products"
 end
