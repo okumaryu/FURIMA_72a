@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_033356) do
+ActiveRecord::Schema.define(version: 2020_07_24_094215) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -20,24 +20,31 @@ ActiveRecord::Schema.define(version: 2020_07_13_033356) do
     t.index ["product_id"], name: "index_brands_on_product_id"
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "src", null: false
+    t.string "src"
     t.bigint "product_id"
     t.index ["product_id"], name: "index_productphotos_on_product_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price"
-    t.text "description"
+    t.integer "price", null: false
+    t.text "description", null: false
     t.integer "brand_id"
-    t.integer "size_id"
-    t.integer "productcondition_id"
-    t.integer "prefecture_id"
-    t.integer "postagepayer_id"
-    t.integer "shippingdate_id"
-    t.integer "seller_id"
+    t.integer "productcondition_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "postagepayer_id", null: false
+    t.integer "shippingdate_id", null: false
+    t.integer "seller_id", null: false
     t.integer "buyer_id"
+    t.integer "size_id"
     t.integer "category_id"
   end
 

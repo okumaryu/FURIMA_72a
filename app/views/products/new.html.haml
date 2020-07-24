@@ -44,7 +44,7 @@
             %span.identification__form__field__label カテゴリー
             %span.identification__form__field__arbitrary 必須
             .identification__form__field--input.icon-relative
-              = f.collection_select :category_id, Category.all, :id, :category, class: 'input'
+              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
           .details__brand
             = f.fields_for :brand do |f|
               %span ブランド
