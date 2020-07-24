@@ -40,11 +40,19 @@
                   必須
                 = f.text_area :description, class: "commodity__detail__description"
         .details
-          .style_formLabel
-            %span.identification__form__field__label カテゴリー
-            %span.identification__form__field__arbitrary 必須
-            .identification__form__field--input.icon-relative
-              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+          .exhibitionPage
+            .exhibitionPage__main
+              .exhibitionPage__main__contents
+                = form_with(model: @product, local: true) do |form|
+                  .exhibitionPage__main__contents__detail
+                    .exhibitionPage__main__contents__detail__title
+                      %p 商品の詳細
+                    .exhibitionPage__main__contents__detail__category
+                      .exhibitionPage__main__contents__detail__category__title
+                        %label.sab-title カテゴリー
+                        %span.required 必須
+                      .exhibitionPage__main__contents__detail__category__choose
+                        = form.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
           .details__brand
             = f.fields_for :brand do |f|
               %span ブランド
