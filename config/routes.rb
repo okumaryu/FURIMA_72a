@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   # ↓な気もしますのでrails routesコマンドなどで確認してください
   # get 'signuplist' => 'users/registrations#signuplist'
 end
-    # resources :users, only: [:new,:edit,:update]
 
-  # root 'mypage#index' 
   resources :items, only: [:new, :create]
+  # resources :mypage do
+  #   collection do
+  #     get 'mypage/deliver_address' => 'mypage#deliver_address'
+  #   end
+  # end  
 end
