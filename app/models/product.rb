@@ -17,6 +17,6 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :brand
   #has_many :likes, dependent: :destroy
   #has_many :comments, dependent: :destroy
-  belongs_to :seller, class_name: "User"
+  #belongs_to :seller, class_name: "User"
   #belongs_to :buyer, class_name: "User"
 end
