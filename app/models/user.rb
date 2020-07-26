@@ -4,5 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, uniqueness: true       
+  validates :name, presence: true, uniqueness: true , #:prefecture_id, presense: true,  
+
+  # extend ActiveHash::Associations::ActiveRecordExtensions
+  # belongs_to_active_hash :prefecture   
+
 end
