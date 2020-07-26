@@ -21,21 +21,21 @@ ActiveRecord::Schema.define(version: 2020_07_13_033356) do
   end
 
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "src", null: false
+    t.string "src"
     t.bigint "product_id"
     t.index ["product_id"], name: "index_productphotos_on_product_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price"
-    t.text "description"
+    t.integer "price", null: false
+    t.text "description", null: false
     t.integer "brand_id"
     t.integer "size_id"
-    t.integer "productcondition_id"
-    t.integer "prefecture_id"
-    t.integer "postagepayer_id"
-    t.integer "shippingdate_id"
+    t.integer "productcondition_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "postagepayer_id", null: false
+    t.integer "shippingdate_id", null: false
     t.integer "seller_id"
     t.integer "buyer_id"
     t.integer "category_id"
