@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  has_many :items
+  has_many :products
   has_ancestry
 
   validates :name, presence: true
