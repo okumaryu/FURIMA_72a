@@ -22,9 +22,9 @@
       .mypage-nav
         %ul.mypage-nav__list
           %li
-            = link_to mypage_index_path, class: "active" do
+            = link_to mypage_index_path do
               マイページ
-              = icon('fas', 'chevron-right', class: "active")
+              = icon('fas', 'chevron-right')
           %li
             = link_to "#" do
               お知らせ
@@ -119,9 +119,9 @@
               電話番号の確認
               = icon('fas', 'chevron-right')
           %li
-            = link_to logout_mypage_index_path do
+            = link_to logout_mypage_index_path, class: "active" do
               ログアウト
-              = icon('fas', 'chevron-right')
+              = icon('fas', 'chevron-right', class: "active")
     .mypage-content
       .mypage-content__logout
         %form(action="#")
