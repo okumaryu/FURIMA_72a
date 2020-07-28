@@ -16,8 +16,6 @@ class ProductsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
   end
   def get_category_children
-    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    # ここでfind_byを使うことでレディーしか取れてなかった
     @category_children = Category.find(params[:parent_id]).children
   end
 
