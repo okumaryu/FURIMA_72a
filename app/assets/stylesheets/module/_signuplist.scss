@@ -32,13 +32,54 @@
           width:343px;
           margin: 0 auto;
           &__field{
+            .label{
+              margin-left:5px;
+            }
+            .span{
+              background-color: red;
+              color:#fff;
+              border-radius: 1px;
+              padding: 2px;
+              font-size: 80%;
+            }
             .input-default{
-              background-color: darkgray;
-              &__select{
-                display: block;
-                width:33%;
-                
+              border-radius: 4px;
+              background-color: #fff;
+            
+            }
+          }
+          &__field__name{
+            // display:flex;
+            .input-default{
+              border-radius: 4px;
+              background-color: #fff;
+              width: calc(50% - 10px);
+              padding-left: 10px;
+              margin-left: 3px;
+            }
+          }  
+          &__field__select{
+            &__wrap{
+              display:block;
+              background-color: blue;
+              .select--default__year{
+                display:block;
+                background-color: blue;
+                width:30%;
               }
+              .select--default__month{
+                width:30%;
+              }
+              .select--default__day{
+                width:30%;
+              }
+            }
+          }
+          &__submit{
+            .btn__default--btn--red{
+              border-radius: 4px;
+              background-color: red;
+              color:#fff;
             }
           }
 

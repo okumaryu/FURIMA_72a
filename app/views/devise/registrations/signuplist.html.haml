@@ -12,7 +12,7 @@
               = f.label :nickname, "ニックネーム"
               %span.span 必須
               -# spanタグはインライン要素
-              = f.text_field :nickname, placeholder: "(例)フリマ太郎", class: "input-default", autofocus: true
+              = f.text_field:nickname, placeholder: "(例)フリマ太郎", class: "input-default", autofocus: true
               - if session[:errorname]
                 %q ニックネームが無効です
                 -# qタグはインライン要素  
@@ -52,7 +52,7 @@
             %div
             = f.label :family_name, "お名前(全角) "
             %span.span 必須
-          .signup__contents__l__field
+          .signup__contents__l__field__name
             = f.text_field :family_name, placeholder: "例) 山田", class: "input-default"
             - if session[:errorfamilyname]
               %q 名字が無効です
@@ -63,7 +63,7 @@
             %div
             = f.label :family_name_rubi, "お名前カナ(全角) "
             %span.span 必須
-          .signup__contents__l__field
+          .signup__contents__l__field__name
             = f.text_field :family_name_rubi, placeholder: "例) ヤマダ", class: "input-default"
             - if session[:errorfamilyname_rubi]
               %q 名字(カナ)が無効です
@@ -77,17 +77,17 @@
             .signup__contents__l__field__select
               .signup__contents__l__field__select__wrap
                 %i.fas.fa-chevron-down
-                = f.date_select :birth_year, discard_month:true, discard_day:true, prompt:"--", start_year:Time.now.year, end_year:Time.now.year-100, class: ".select-default.year.resigtration-field"
+                = f.date_select :birth_year, discard_month:true, discard_day:true, prompt:"--", start_year:Time.now.year, end_year:Time.now.year-100, class: "select--default__year"
               %span
                 年
               .signup__contents__l__field__select__wrap
                 %i.fas.fa-chevron-down
-                = f.date_select :birth_month, discard_year:true, discard_day:true, use_month_numbers:true, prompt:"--", class: ".select-default.month.registration-field"
+                = f.date_select :birth_month, discard_year:true, discard_day:true, use_month_numbers:true, prompt:"--", class: "select--default__month"
               %span
                 月
               .signup__contents__l__field__select__wrap
                 %i.fas.fa-chevron-down
-                = f.date_select :birth_day,  discard_month:true, start_year: 1, end_year: 31, prompt:"--", class: ".select.select-default.day.registration-field"
+                = f.date_select :birth_day,  discard_month:true, start_year: 1, end_year: 31, prompt:"--", class: "select--default__day"
               %span
                 日
                 - if session[:errorbirth_year]
@@ -121,7 +121,7 @@
             %span.span 必須
             .signup__contents__l__field__select
               %i.fas.fa-chevron-down
-              -# = f.collection_select :prefecture_code, Prefecture.all, :id, :name, prompt: "---", class: "input-default"
+              = f.collection_select :prefecture_code, Prefecture.all, :id, :name, prompt: "---", class: "input-default"
               - if session[:errorprefecture_code]
                 %q 都道府県が無効です
           .signup__contents__l__field
@@ -142,7 +142,16 @@
             = f.text_field :building_name, placeholder: "例) 新町ビル505", class: "input-default"
             - if session[:errorbuilding_name]
               %q 建物名が無効です
+      %h2 電話番号の確認
+      = form_for @user, url: users_signuplist_path, method: :post, class: "signup__container__main" do |f|
+        .signup__contents__l
+          .signup__contents__l__field
+            = f.label :phone_number, "携帯電話の番号(ハイフン不要)"
+            %span.span 任意
+            = f.phone_field :phone_number, placeholder: "携帯電話の番号(ハイフン不要)", class: "input-default"
+            - if session[:errorphone_number]
+              %q 番号が無効です
           .signup__contents__l__submit
-            = f.submit "次へ進む", class:"btn-default btn-red"
+            = f.submit "次へ進む", class:"btn__default--btn--red"
 
   = render "/shared/footer01"      

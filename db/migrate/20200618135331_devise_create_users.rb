@@ -24,7 +24,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :destination_family_name_rubi, null: false
       t.string :destination_first_name_rubi, null: false
       t.integer :zipcode, null:false
-      t.integer :prefecture_code, null: false, default: 0
+      t.integer :prefecture_code, null: false #default: 0
       t.string :city, null: false
       t.string :house_number, null: false
       t.string :building_name, null: false

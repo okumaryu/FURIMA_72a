@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_135331) do
     t.string "destination_family_name_rubi", null: false
     t.string "destination_first_name_rubi", null: false
     t.integer "zipcode", null: false
-    t.integer "prefecture_code", default: 0, null: false
+    t.integer "prefecture_code", null: false
     t.string "city", null: false
     t.string "house_number", null: false
     t.string "building_name", null: false
