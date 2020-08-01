@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @products = Product.find(params[:id])
-    @product_photos = @products.productphotos
+    @product = Product.find(params[:id])
+    @product_photos = @product.productphotos
   end
   
   def new

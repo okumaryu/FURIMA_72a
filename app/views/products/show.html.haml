@@ -9,18 +9,18 @@
     %li
       = icon('fas', 'angle-right')
     %li 
-      = link_to @products.category.name
+      = link_to @product.category.name
     %li
       = icon('fas', 'angle-right')
     %li 
-      = @products.name
+      = @product.name
 .main
   .main-show
     .inner
       .inner-content
         .item-box
           %h2.item-box__name
-            = @products.name
+            = @product.name
           .item-box__img
             %ul
               %li
@@ -35,17 +35,17 @@
           .item-box__price
             %span 
               ¥
-              = @products.price.to_s
+              = @product.price.to_s
             .item-box__price-detail
               %span (税込)
               %span 
-                - if @products.postagepayer_id == 1
+                - if @product.postagepayer_id == 1
                   送料込み
-                - elsif @products.postagepayer_id == 2
+                - elsif @product.postagepayer_id == 2
                   着払い
                 - else
                   選択してください
-            - if @products.seller_id == current_user.id
+            - if @product.seller_id == current_user.id
               = link_to "#", class: "purchase-btn" do
                 購入画面に進む
             - else
@@ -56,42 +56,42 @@
               = link_to "#", class: "delete-btn", method: :delete do
                 この商品を削除する
           .item-box__text
-            = @products.description
+            = @product.description
           .item-box__table
             %table
               %tbody
                 %tr
                   %th 出品者
                   %td 
-                    = @products.seller_id
+                    = @product.seller_id
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to @products.category.name
+                    = link_to @product.category.name
                 %tr
                   %th ブランド
                   %td
-                    = @products.brand_id
+                    = @product.brand_id
                 %tr
                   %th 商品のサイズ
                   %td
-                    = @products.size_id
+                    = @product.size_id
                 %tr
                   %th 商品の状態
                   %td 
-                    = @products.productcondition.name
+                    = @product.productcondition.name
                 %tr
                   %th 配送料の負担
                   %td 
-                    = @products.postagepayer.name
+                    = @product.postagepayer.name
                 %tr
                   %th 発送元の地域
                   %td 
-                    = @products.prefecture.name
+                    = @product.prefecture.name
                 %tr
                   %th 発送日の目安
                   %td 
-                    = @products.shippingdate.name
+                    = @product.shippingdate.name
           .optional-area
             %ul
               %li.like-btn
@@ -122,6 +122,6 @@
               %span 後ろの商品
               = icon('fas', 'angle-right')
         .related-items
-          = link_to "#{@products.category.name}をもっと見る"
+          = link_to "#{@product.category.name}をもっと見る"
 
   = render "/shared/footer"
