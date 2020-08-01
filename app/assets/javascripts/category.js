@@ -45,7 +45,6 @@ $(document).on('turbolinks:load', function(){
           dataType: 'json'
         })
         .done(function(children){
-          console.log(children)
           $('.children_wrapper').remove(); //親が変更された時、子以下を削除する
           $('.grandchildren_wrapper').remove();
           var insertHTML = '';
