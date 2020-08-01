@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033356) do
     t.integer "shippingdate_id", null: false
     t.integer "seller_id"
     t.integer "buyer_id"
-    t.integer "productphoto_id", null: false
+    t.integer "productphoto_id"
     t.integer "category_id"
   end
 

@@ -13,7 +13,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer	:shippingdate_id, null:false, foreign_key: true
       t.integer	:seller_id, null: true #foreign_key: true
       t.integer	:buyer_id#, null: false, foreign_key: true
-      t.integer :productphoto_id, null: false, foreign_key: true
+      t.integer :productphoto_id, null: true, foreign_key: true
     end
   end
 end
