@@ -17,9 +17,9 @@
               #image-box_id
                 %label    
                   %i.fas.fa-camera
-                  = f.fields_for :productphotos do |image|
-                    .js-file_group{"data-index" => "#{image.index}"}
-                      = f.file_field :src, class: 'js-file'
+                  = f.fields_for :productphotos do |i|
+                    .js-file_group{"data-index" => "#{i.index}"}
+                      = i.file_field :src, class: 'js-file'
                   %p
                     ドラックアンドドロップ
                   %p
