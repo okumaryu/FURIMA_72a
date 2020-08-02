@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033356) do
   end
 
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "src"
+    t.string "src", null: false
     t.bigint "product_id"
     t.index ["product_id"], name: "index_productphotos_on_product_id"
   end
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033356) do
     t.integer "shippingdate_id", null: false
     t.integer "seller_id"
     t.integer "buyer_id"
-    t.integer "productphoto_id"
+    t.integer "productphoto_id", null: false
     t.integer "category_id"
   end
 

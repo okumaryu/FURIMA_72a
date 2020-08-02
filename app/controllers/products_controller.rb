@@ -11,11 +11,13 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.productphotos.new
+    
   end
 
   def create
      @product = Product.new(product_params)
     if @product.save
+      binding.pry
       redirect_to root_path
     else
       render :new
