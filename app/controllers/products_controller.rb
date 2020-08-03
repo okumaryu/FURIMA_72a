@@ -12,9 +12,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.productphotos.new
     @product.build_brand
-
     @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
     @category_parent_array = Category.where(ancestry: nil)
   end
   def get_category_children
@@ -29,7 +27,6 @@ class ProductsController < ApplicationController
   def create
      @product = Product.new(product_params)
     if @product.save
-      binding.pry
       redirect_to root_path
     else
       render :new
