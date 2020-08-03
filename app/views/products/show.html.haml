@@ -24,14 +24,14 @@
           .item-box__img
             %ul
               %li
-                = image_tag @product_photos[0].src
+                = image_tag @product_photos[0].src.to_s
                 %ul
                   %li
-                    = image_tag @product_photos[1].src
+                    = image_tag @product_photos[1].src.to_s
                   %li
-                    = image_tag @product_photos[2].src
+                    = image_tag @product_photos[2].src.to_s
                   %li
-                    = image_tag @product_photos[3].src
+                    = image_tag @product_photos[3].src.to_s
           .item-box__price
             %span 
               ¥
