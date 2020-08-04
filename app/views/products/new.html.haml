@@ -3,7 +3,7 @@
     = image_tag asset_path('logo.png'), type: '', alt: '', size: "140x41"
   .items
     .body
-      = form_for @product do |f|
+      = form_with model: @product ,local: true do |f|
         .photos
           .upload-box
             .style_formLabel
@@ -43,21 +43,21 @@
           .exhibitionPage
             .exhibitionPage__main
               .exhibitionPage__main__contents
-                = form_with(model: @product, local: true) do |form|
-                  .exhibitionPage__main__contents__detail
-                    .exhibitionPage__main__contents__detail__title
-                      %p 商品の詳細
-                    .exhibitionPage__main__contents__detail__category
-                      .exhibitionPage__main__contents__detail__category__title
-                        %label.sab-title カテゴリー
-                        %span.required 必須
-                      .exhibitionPage__main__contents__detail__category__choose
-                        = form.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+                
+                .exhibitionPage__main__contents__detail
+                  .exhibitionPage__main__contents__detail__title
+                    %p 商品の詳細
+                  .exhibitionPage__main__contents__detail__category
+                    .exhibitionPage__main__contents__detail__category__title
+                      %label.sab-title カテゴリー
+                      %span.required 必須
+                    .exhibitionPage__main__contents__detail__category__choose
+                      = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
           .details__brand
-            = f.fields_for :brand do |f|
+            = f.fields_for :brand do |b|
               %span ブランド
               %span.form-require-gray 任意
-              = f.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
+              = b.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
                     
           .style_formLabel
             %span.identification__form__field__label 商品の状態
@@ -104,7 +104,7 @@
                 円
                 
             .buttons    
-              = f.submit class: "buttons__sell", value:"出品する"
+              = f.submit "出品する", class: "buttons__sell"
               .buttons__save 下書きに保存
               =link_to "product_path" do
                 .buttons__back もどる
