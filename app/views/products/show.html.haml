@@ -27,11 +27,20 @@
                 = image_tag @product_photos[0].src
                 %ul
                   %li
-                    = image_tag @product_photos[1].src
+                    - if @product_photos[1].blank?
+                      = image_tag asset_path('logo.png'), type: '', alt: ''
+                    - else
+                      = image_tag @product_photos[1].src
                   %li
-                    = image_tag @product_photos[2].src
+                    - if @product_photos[2].blank?
+                      = image_tag asset_path('logo.png'), type: '', alt: ''
+                    - else
+                      = image_tag @product_photos[2].src
                   %li
-                    = image_tag @product_photos[3].src
+                    - if @product_photos[3].blank?
+                      = image_tag asset_path('logo.png'), type: '', alt: ''
+                    - else
+                      = image_tag @product_photos[3].src
           .item-box__price
             %span 
               ¥
