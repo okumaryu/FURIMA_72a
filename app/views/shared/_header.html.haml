@@ -1,0 +1,30 @@
+.body
+  .header
+    .header-inner
+      .innner-top
+        %h1.innner-icon
+          = link_to "#", class: "innner-icon__a" do
+            %span.innner-icon__image
+              = image_tag asset_path('logo.png'), type: '', alt: '', size: "140x41"
+        .innner-top__box
+          %form{"accept-charset": "UTF-8", action: "#", method: "get"}
+            %input{name: "utf8", type: "hidden", value: "✓"}/
+            %input{class:'innner-top__box-input', name: "key", placeholder: "キーワードから探す" }/
+            %button{type: "submit"}
+              %span.innner-top__box__icon
+                = image_tag asset_path('icon-search 1.png'), type: '', alt: ''
+      .innner-lists
+        %ul.lists-left
+          %li.lists-left__item
+            = link_to "#", class: "lists-left__item-category" do
+              カテゴリー
+          %li.lists-left__item
+            = link_to "#", class:"lists-left__item-brand" do
+              ブランド
+        %ul.lists-right
+          %li.lists-right__item
+            = link_to new_user_session_path, class:"lists-right__item-login" do
+              ログイン
+          %li.lists-right__item
+            = link_to new_user_registration_path, class:"lists-right__item-register" do
+              新規会員登録

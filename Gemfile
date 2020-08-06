@@ -36,9 +36,20 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-group :development, :test do
+group :development, :test do #テストのために設定
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rails-console'
 end
 
 group :development do
@@ -61,15 +72,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-group :development, :test do
-  gem 'pry-rails'
-  gem 'capistrano'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
-  gem 'capistrano-rails-console'
-end
+# group :development, :test do
+
+# end
 
 # 以下全てをGemfile下部にコピー
 group :production do
@@ -77,5 +82,16 @@ group :production do
 end
 
 gem 'haml-rails'
+
 gem 'font-awesome-sass'
-gem 'erb2haml'
+
+gem 'payjp'#クレジット設定で必要。参考：https://pay.jp/
+
+gem 'carrierwave' #画像upやリサイズ等で必要。参考：https://master.tech-camp.in/curriculums/1175
+gem 'mini_magick'#参考：https://github.com/carrierwaveuploader/carrierwave
+gem 'fog-aws' #参考：https://master.tech-camp.in/curriculums/3967
+gem 'ancestry' #カテゴリにて必要。参考：https://github.com/stefankroes/ancestry
+gem 'jquery-rails' #非同期用
+gem 'jp_prefecture'
+gem 'active_hash'
+gem 'devise' #ログイン機能で必要。参考：https://master.tech-camp.in/curriculums/3641
