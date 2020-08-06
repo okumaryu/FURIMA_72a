@@ -11,24 +11,24 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name,         null: false
       t.string :family_name_rubi,    null: false
       t.string :first_name_rubi,     null: false
-      t.integer :birth_year,         null: false
-      t.integer :birth_month,        null: false
-      t.integer :birth_day,          null: false
+      t.date   :birthday,           null: false
+      # t.integer :birth_month,        null: false
+      # t.integer :birth_day,          null: false
       t.text    :introduction
       t.string  :avatar
       # t.reference :user             null: false, foreign_key: true
 
 
-      t.string :destination_family_name, null: false
-      t.string :destination_first_name, null: false
-      t.string :destination_family_name_rubi, null: false
-      t.string :destination_first_name_rubi, null: false
+      # t.string :destination_family_name, null: false
+      # t.string :destination_first_name, null: false
+      # t.string :destination_family_name_rubi, null: false
+      # t.string :destination_first_name_rubi, null: false
       t.integer :zipcode, null:false
       t.integer :prefecture_code, null: false #default: 0
       t.string :city, null: false
       t.string :house_number, null: false
-      t.string :building_name, null: false
-      t.integer :phone_number, null: false, unique: true
+      t.string :building_name
+      t.integer :phone_number, limit: 8,unique: true, null: true
       # t.integer :user_id, null: false, foreign_key: true
 
 

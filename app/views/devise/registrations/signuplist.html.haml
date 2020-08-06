@@ -3,16 +3,18 @@
 
   .signup__container
     .signup__container__l
-      %h2 会員情報入力
 
-      = form_for @user, url:  users_signuplist_path, method: :post, class: "signup__container__main" do |f|
+      = form_for @user, url:  user_registration_path, method: :post, class: "signup__container__main" do |f|
+        =render "devise/shared/error_messages", resource: @user
+          
+        %h2 会員情報入力
         .signup__contents__l
           .signup__contents__l__field
             %div
               = f.label :nickname, "ニックネーム"
               %span.span 必須
               -# spanタグはインライン要素
-              = f.text_field:nickname, placeholder: "(例)フリマ太郎", class: "input-default", autofocus: true
+              = f.text_field :nickname, placeholder: "(例)フリマ太郎", class: "input-default", autofocus: true
               - if session[:errorname]
                 %q ニックネームが無効です
                 -# qタグはインライン要素  
@@ -77,19 +79,19 @@
             .signup__contents__l__field__select
               .signup__contents__l__field__select__wrap
                 %i.fas.fa-chevron-down
-                = f.date_select :birth_year, discard_month:true, discard_day:true, prompt:"--", start_year:Time.now.year, end_year:Time.now.year-100, class: "select--default__year"
+                = f.date_select :birthday, prompt:"--", start_year:Time.now.year, end_year:Time.now.year-100, class: "select--default__year", use_month_numbers: true
               %span
                 年
-              .signup__contents__l__field__select__wrap
-                %i.fas.fa-chevron-down
-                = f.date_select :birth_month, discard_year:true, discard_day:true, use_month_numbers:true, prompt:"--", class: "select--default__month"
-              %span
-                月
-              .signup__contents__l__field__select__wrap
-                %i.fas.fa-chevron-down
-                = f.date_select :birth_day,  discard_month:true, start_year: 1, end_year: 31, prompt:"--", class: "select--default__day"
-              %span
-                日
+                -# .signup__contents__l__field__select__wrap
+                -#   %i.fas.fa-chevron-down
+                -#   = f.date_select :birth_month, discard_year:true, discard_day:true, use_month_numbers:true, prompt:"--", class: "select--default__month"
+                -# %span
+                -#   月
+                -# .signup__contents__l__field__select__wrap
+                -#   %i.fas.fa-chevron-down
+                -#   = f.date_select :birth_day,  discard_month:true, start_year: 1, end_year: 31, prompt:"--", class: "select--default__day"
+                -# %span
+                -#   日
                 - if session[:errorbirth_year]
                   %q 生年月日が無効です
                 .form-info-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
@@ -107,13 +109,12 @@
 
             -# %main.address-container__main
             -#   %section.address-container__main__container
-      %h2 お届け先住所入力
-      = form_for @user, url:  users_signuplist_path, method: :post, class: "signup__container__main" do |f|
+        %h2 お届け先住所入力
         .signup__contents__l
           .signup__contents__l__field
-            = f.label :zipcode, "郵便番号"
+            = f.label :zipcode, "郵便番号（ハイフン不要）"
             %span.span 必須
-            = f.text_field :zipcode, placeholder: "例) 123-4567", class: "input-default"
+            = f.text_field :zipcode, placeholder: "例) 1234567", class: "input-default"
             - if session[:errorzipcode]
               %q 郵便番号が無効です
           .signup__contents__l__field
@@ -138,20 +139,21 @@
               %q 地域が無効です
           .signup__contents__l__field
             = f.label :building_number, "建物名"
-            %span.span 任意
+            %span.span__ninni 任意
             = f.text_field :building_name, placeholder: "例) 新町ビル505", class: "input-default"
             - if session[:errorbuilding_name]
               %q 建物名が無効です
-      %h2 電話番号の確認
-      = form_for @user, url: users_signuplist_path, method: :post, class: "signup__container__main" do |f|
+        %h2 電話番号の確認
         .signup__contents__l
           .signup__contents__l__field
             = f.label :phone_number, "携帯電話の番号(ハイフン不要)"
-            %span.span 任意
+            %span.span__ninni 任意
             = f.phone_field :phone_number, placeholder: "携帯電話の番号(ハイフン不要)", class: "input-default"
             - if session[:errorphone_number]
               %q 番号が無効です
           .signup__contents__l__submit
             = f.submit "次へ進む", class:"btn__default--btn--red"
+    
+      -# =render "devise/shared/links"
 
   = render "/shared/footer01"      

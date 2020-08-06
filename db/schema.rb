@@ -20,21 +20,15 @@ ActiveRecord::Schema.define(version: 2020_06_18_135331) do
     t.string "first_name", null: false
     t.string "family_name_rubi", null: false
     t.string "first_name_rubi", null: false
-    t.integer "birth_year", null: false
-    t.integer "birth_month", null: false
-    t.integer "birth_day", null: false
+    t.date "birthday", null: false
     t.text "introduction"
     t.string "avatar"
-    t.string "destination_family_name", null: false
-    t.string "destination_first_name", null: false
-    t.string "destination_family_name_rubi", null: false
-    t.string "destination_first_name_rubi", null: false
     t.integer "zipcode", null: false
     t.integer "prefecture_code", null: false
     t.string "city", null: false
     t.string "house_number", null: false
-    t.string "building_name", null: false
-    t.integer "phone_number", null: false
+    t.string "building_name"
+    t.bigint "phone_number"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
