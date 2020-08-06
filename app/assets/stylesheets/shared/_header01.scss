@@ -1,0 +1,11 @@
+.header01{
+  height: 128px;
+  min-width: 768px;
+  align-items: center;
+  &__logo{
+    padding-top:40px ;
+    display: flex;
+    width:185px;
+    margin: 0 auto ;
+    }
+  }
