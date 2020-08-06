@@ -24,12 +24,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-    if @user.save
-      super
-      users_complete_path and return
+    if @user.save!
+   
+      redirect_to users_complete_path 
     else
       flash.now[:alert] = @user.errors.full_messages
-      render :signuplist and return
+      render :signuplist 
     end
 
       # nickname: session[:nickname],
