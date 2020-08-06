@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'products#show'
-  root 'items#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :products, only: [:new,:create,:show]
+  resources :mypage, only: [:index] do
+    collection do
+      get :logout
+      get :credit
+    end
+  end
+  resources :users, only: [:new]
 end
+
