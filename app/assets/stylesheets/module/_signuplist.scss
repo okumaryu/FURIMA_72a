@@ -67,35 +67,21 @@
           &__field__select{
             &__wrap{
               display:block;
-              background-color: blue;
-              .select--default__year{
-                display:block;
-                background-color: blue;
-                width:30%;
-              }
-              .select--default__month{
-                width:30%;
-              }
-              .select--default__day{
-                width:30%;
-              }
+              background-color:gainsboro;
+            }
+            .form-info-text{
+              font-size: 15px;
             }
           }
           &__submit{
+            padding: 20px 0;
             .btn__default--btn--red{
               border-radius: 4px;
               background-color: red;
               color:#fff;
             }
           }
-
         }
-
-      
-      
     }
-    
-    
-
   }
 }

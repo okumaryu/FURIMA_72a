@@ -1,16 +1,17 @@
-.container02
+.container03
   = render "/shared/header01"
 
   .complete__container
     .complete__container__l
       %h2 会員登録完了
-      .complete__container__message
-        %p
-          ありがとうございます。
-          %br
-          会員登録が完了しました。
-        .complete__container__message__submit
-          = link_to root_path, class: "btn-default btn-red" do
-            メルカリをはじめる
+      .complete__container__l__message
+        %p 
+        ありがとうございます。
+        %br 
+        会員登録が完了しました。
+      .complete__container__l__submit
+        = link_to root_path, class: "btn__start__FURIMA" do
+          FURIMAをはじめる
+      .complete__container__l__blank
 
-= render "/shared/footer01"           
+  = render "/shared/footer01"           
