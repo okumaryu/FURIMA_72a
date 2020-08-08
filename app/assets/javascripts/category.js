@@ -57,10 +57,10 @@ $(document).on('turbolinks:load', function(){
         .fail(function(){
           alert('カテゴリー取得に失敗しました');
         })
-      }else{
-        $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除する
-        $('#grandchildren_wrapper').remove();
-      }
+        }else{
+          $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除する
+          $('#grandchildren_wrapper').remove();
+        }
     });
 
    // 子カテゴリー選択後のイベント
