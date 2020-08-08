@@ -9,7 +9,7 @@
     %li
       = icon('fas', 'angle-right')
     %li 
-      = link_to "#" do
+      = link_to mypage_index_path do
         マイページ
 
 %main.mypage-main
@@ -18,7 +18,7 @@
       .mypage-nav
         %ul.mypage-nav__list
           %li
-            = link_to "#", class: "active" do
+            = link_to mypage_index_path, class: "active" do
               マイページ
               = icon('fas', 'chevron-right', class: "active")
           %li
@@ -99,7 +99,7 @@
               発送元・お届け先住所変更
               = icon('fas', 'chevron-right')
           %li
-            = link_to "#" do
+            = link_to credit_mypage_index_path do
               支払い方法
               = icon('fas', 'chevron-right')
           %li
@@ -115,7 +115,7 @@
               電話番号の確認
               = icon('fas', 'chevron-right')
           %li
-            = link_to "#" do
+            = link_to logout_mypage_index_path do
               ログアウト
               = icon('fas', 'chevron-right')
 

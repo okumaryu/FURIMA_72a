@@ -2,10 +2,6 @@ class MypageController < ApplicationController
   def index
   end
 
-  # def deliver_address
-  # end
-
-  # def show
-  # end
-
+  def logout
+  end
 end

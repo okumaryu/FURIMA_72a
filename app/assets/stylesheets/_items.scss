@@ -37,11 +37,19 @@ p{
 }
 .commodity{
   border-bottom: 1px solid rgb(245, 245, 245);
+  &__detail__description{
+    width: 100%;
+    height: 200px;
+  }
 }
 
 .details{
   height: 4%;
   border-bottom: 1px solid rgb(245, 245, 245);
+  margin: 0px,auto;
+  &__brand{
+    padding: 3%;
+  }
 }
 .delivery{
   border-bottom: 1px solid rgb(245, 245, 245);
@@ -52,7 +60,7 @@ p{
   border-bottom: 1px solid rgb(245, 245, 245);
   &__celect{
   display: flex;
-  justify-content: space-between;
+  
   margin-bottom: 10px;
   &__plate{
     padding-left: 30%;
@@ -66,13 +74,19 @@ p{
   
   }
 }
+.labels{
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  padding-top:10px ;
+}
 .bottom{
   border-bottom: 1px solid rgb(245, 245, 245);
 }
 .profit{
   display: flex;
   justify-content: space-between;
-  padding: 0px 40px;
+  padding: 10px 40px;
 }
 .buttons{
   text-align: center;
@@ -80,15 +94,20 @@ p{
   &__sell{
     height: 40px;
     background-color: red;
+    color: white;
+    font-size: 20px;
   }
   &__save{
+    font-size: 18px;
     margin-top: 5%;
     background-color: #cccccc;
     height: 40px;
+    padding: 5px
   }
   &__back{
     text-align: center;
     margin-top: 5%;
+    
   }
 }
 .items{
@@ -103,13 +122,13 @@ input{
   height: 48px;
   width: 100%;
 }
-.profit{
-  width: 50%;
-}
 .sign{
   color: red;
 }
 .warning{
   font-size: 12px;
   padding: 5%;
+}
+.identification__form__field__arbitrary {
+  color: red;
 }

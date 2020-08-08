@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'mypage#index' 
+  root 'products#index'
   devise_for :users, :controllers => {
  :registrations => 'users/registrations',
  :sessions => 'users/sessions',
@@ -18,10 +18,13 @@ Rails.application.routes.draw do
   # get 'signuplist' => 'users/registrations#signuplist'
 end
 
-  resources :items, only: [:new, :create]
-  # resources :mypage do
-  #   collection do
-  #     get 'mypage/deliver_address' => 'mypage#deliver_address'
-  #   end
-  # end  
+  resources :products, only: [:new,:create,:show]
+  resources :mypage, only: [:index] do
+    collection do
+      get :logout
+      get :credit
+    end
+  end
+  resources :users, only: [:new]
 end
+

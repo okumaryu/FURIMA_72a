@@ -25,5 +25,5 @@ class User < ApplicationRecord
     # validates :building_name    
     validates :phone_number,     allow_nil: true  , format: { with: /\A\d{10,11}\z/ } #/^\d{10,11}$/ 
 
-    
+  has_many :products
 end
