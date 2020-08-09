@@ -53,6 +53,11 @@
                       %span.required 必須
                     .exhibitionPage__main__contents__detail__category__choose
                       = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+                    .size-sellect_form
+                      = f.collection_select :size_id, Size.find([1,2]),:id, :size,class:"input"
+                    //.size-sellect_form
+                    //  = f.collection_select :size_id,Size.where("id > ?", 11),:id, :size,{class:"input"}
+                    
           .details__brand
             = f.fields_for :brand do |b|
               %span ブランド

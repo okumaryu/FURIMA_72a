@@ -8,7 +8,8 @@ class Product < ApplicationRecord
   belongs_to_active_hash :prefecture
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :shippingdate
-  #belongs_to_active_hash :size
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :size
   belongs_to :category
   has_many :productphotos, dependent: :destroy
   accepts_nested_attributes_for :productphotos, allow_destroy: true
