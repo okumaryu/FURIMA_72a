@@ -3,7 +3,7 @@
     .header-inner
       .innner-top
         %h1.innner-icon
-          = link_to "#", class: "innner-icon__a" do
+          = link_to root_path, class: "innner-icon__a" do
             %span.innner-icon__image
               = image_tag asset_path('logo.png'), type: '', alt: '', size: "140x41"
         .innner-top__box
@@ -23,8 +23,14 @@
               ブランド
         %ul.lists-right
           %li.lists-right__item
-            = link_to new_user_session_path, class:"lists-right__item-login" do
-              ログイン
-          %li.lists-right__item
-            = link_to new_user_registration_path, class:"lists-right__item-register" do
-              新規会員登録
+            -if user_signed_in?
+              = link_to mypage_index_path, class:"lists-right__item-mypage" do
+                マイページ
+              = link_to destroy_user_session_path, class:"lists-right__item-destroy", method: :delete do
+                ログアウト
+            -else   
+              = link_to new_user_session_path, class:"lists-right__item-login" do
+                ログイン
+              = link_to new_user_registration_path, class:"lists-right__item-register" do
+                新規会員登録
+            

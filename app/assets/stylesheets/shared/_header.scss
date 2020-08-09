@@ -79,6 +79,24 @@
       }
       .lists-right{
         display: flex;
+        &__item-mypage{
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
+        }
+        &__item-destroy{
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
+        }
         &__item-login{
           color: #333;
           text-decoration: none;
