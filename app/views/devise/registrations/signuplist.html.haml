@@ -29,10 +29,6 @@
             %div
               = f.label :password, "パスワード"
               %span.span 必須
-              -# - if @minimum_password_length
-              -#   %em
-              -#     (#{@minimum_password_length} characters minimum)
-              -# %br/
               = f.password_field :password, placeholder: "７文字以上の半角英数字",class: "input-default",autocomplete: "new-password"
               - if session[:errorpassword]
                 %q パスワードが無効です
@@ -42,10 +38,6 @@
             %div
               = f.label :password_confirmation, "パスワード（確認用）"
               %span.span 必須
-              -# - if @minimum_password_length
-              -#   %em
-              -#     (#{@minimum_password_length} characters minimum)
-              -# %br/
               = f.password_field :password_confirmation, placeholder: "７文字以上の半角英数字(確認用)",class: "input-default",autocomplete: "new-password"
           .signup__contents__l__field
             %h3 本人確認
@@ -78,24 +70,14 @@
             %br
             .signup__contents__l__field__select
               .signup__contents__l__field__select__wrap
-                -# %i.fas.fa-chevron-down
+                -# %i.fas.fa-chevron-down   ←★★73行目：今後ＣＳＳの出来を高めるために使う可能性あり
                 = f.date_select :birthday, prompt:"--", start_year:Time.now.year, end_year:Time.now.year-100, class: "select--default__year", use_month_numbers: true
                 -# != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
-              -# %span
-              -#   年
-                -# .signup__contents__l__field__select__wrap
-                -#   %i.fas.fa-chevron-down
-                -#   = f.date_select :birth_month, discard_year:true, discard_day:true, use_month_numbers:true, prompt:"--", class: "select--default__month"
-              -# %span  
-              -#   月
-                -# .signup__contents__l__field__select__wrap
-                -#   %i.fas.fa-chevron-down
-                -#   = f.date_select :birth_day,  discard_month:true, start_year: 1, end_year: 31, prompt:"--", class: "select--default__day"
-              -# %span
-              -#   日
+                -# ★★75行目：本当はこっちにしたいが、現状うまくコントローラの記述が出来ないため模索中
               - if session[:errorbirth_year]
                 %q 生年月日が無効です
               .form-info-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+              -# ★★82-88行目は今後の追加実装に向けて残しておく。
           -# .signup__contents__l__field
           -#   = check_box_tag :name, "", "", checked: false, class: "checkbox-default" #仮の引数
           -#   私はロボットではありません
@@ -108,8 +90,6 @@
               本人情報の登録について
               %i.fas.fa-chevron-right
 
-            -# %main.address-container__main
-            -#   %section.address-container__main__container
         %h2 お届け先住所入力
         .signup__contents__l
           .signup__contents__l__field
@@ -154,7 +134,5 @@
               %q 番号が無効です
           .signup__contents__l__submit
             = f.submit "次へ進む", class:"btn__default--btn--red"
-    
-      -# =render "devise/shared/links"
 
   = render "/shared/footer01"      
