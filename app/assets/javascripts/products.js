@@ -32,8 +32,9 @@ $(document).on('turbolinks:load', ()=> {
   let input = document.querySelector('#product_price');
   const log = document.getElementById('handlefee');
   const profit = document.getElementById('profit');
+  
   input.addEventListener('input', updateValue);
-    function updateValue(e) {
+    function updateValue() {
       let val1 = parseInt(input.value, 10);
       let output = val1 * 0.1
       let gain = val1 - output
