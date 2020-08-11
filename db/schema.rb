@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_033356) do
+ActiveRecord::Schema.define(version: 2020_07_24_094215) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2020_07_13_033356) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_brands_on_product_id"
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["name"], name: "index_categories_on_name"
   end
 
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -31,20 +40,32 @@ ActiveRecord::Schema.define(version: 2020_07_13_033356) do
     t.integer "price", null: false
     t.text "description", null: false
     t.string "brand_id"
-    t.integer "size_id"
-    t.integer "productcondition_id"
+    t.integer "productcondition_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "postagepayer_id", null: false
     t.integer "shippingdate_id", null: false
     t.integer "seller_id"
     t.integer "buyer_id"
-    t.integer "productphoto_id", null: false
     t.integer "category_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_rubi", null: false
+    t.string "first_name_rubi", null: false
+    t.date "birthday", null: false
+    t.text "introduction"
+    t.string "avatar"
+    t.integer "zipcode", null: false
+    t.integer "prefecture_code", null: false
+    t.string "city", null: false
+    t.string "house_number", null: false
+    t.string "building_name"
+    t.bigint "phone_number"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

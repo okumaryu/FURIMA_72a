@@ -3,7 +3,7 @@
     = image_tag asset_path('logo.png'), type: '', alt: '', size: "140x41"
   .items
     .body
-      = form_for @product do |f|
+      = form_with model: @product ,local: true do |f|
         .photos
           .upload-box
             .style_formLabel
@@ -40,16 +40,27 @@
                   必須
                 = f.text_area :description, class: "commodity__detail__description"
         .details
-          .style_formLabel
-            %span.identification__form__field__label カテゴリー
-            %span.identification__form__field__arbitrary 必須
-            .identification__form__field--input.icon-relative
-              = f.collection_select :category_id, Category.all, :id, :name, class: 'input'
+          .exhibitionPage
+            .exhibitionPage__main
+              .exhibitionPage__main__contents
+                
+                .exhibitionPage__main__contents__detail
+                  .exhibitionPage__main__contents__detail__title
+                    %p 商品の詳細
+                  .exhibitionPage__main__contents__detail__category
+                    .exhibitionPage__main__contents__detail__category__title
+                      %label.sab-title カテゴリー
+                      %span.required 必須
+                    .exhibitionPage__main__contents__detail__category__choose
+                      = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+                    .size-sellect_form
+                      = f.collection_select :size_id, Size.find([1,2]),:id, :size,class:"input"
+                    
           .details__brand
-            = f.fields_for :brand do |f|
+            = f.fields_for :brand do |b|
               %span ブランド
               %span.form-require-gray 任意
-              = f.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
+              = b.text_field :name, placeholder: "例）シャネル", value: "", class: "input-default"
                     
           .style_formLabel
             %span.identification__form__field__label 商品の状態
@@ -64,7 +75,7 @@
           .style_formLabel
             %span.identification__form__field__lavel 発送元の地域
             %span.identification__form__field__arbitrary 必須
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'input'
           .style_formLabel
             %span.identification__form__field__lavel 発送までの日数
             %span.identification__form__field__arbitrary 必須
@@ -96,8 +107,7 @@
                 円
                 
             .buttons    
-
-              = f.submit class: "buttons__sell", value:"出品する"
+              = f.submit "出品する", class: "buttons__sell"
               .buttons__save 下書きに保存
               =link_to "product_path" do
                 .buttons__back もどる

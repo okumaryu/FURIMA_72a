@@ -24,7 +24,7 @@
           .item-box__img
             %ul
               %li
-                = image_tag @product_photos[0].src
+                = image_tag @product_photos[0].src.to_s
                 %ul
                   %li
                     - if @product_photos[1].blank?
@@ -81,10 +81,6 @@
                   %th ブランド
                   %td
                     = @product.brand_id
-                %tr
-                  %th 商品のサイズ
-                  %td
-                    = @product.size_id
                 %tr
                   %th 商品の状態
                   %td 

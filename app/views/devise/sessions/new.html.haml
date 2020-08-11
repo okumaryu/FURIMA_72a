@@ -17,12 +17,16 @@
           = icon('fab', 'apple',  class: "contents__btn--icon")
           Appleでログイン
       .login__content__form
-        .login__content__form__group
-          %input.login__input__text{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
-        .login__content__form__group
-          %input.login__input__text{name: "password", placeholder: "パスワード", type: "password", value: ""}
-        .login__content__form__group
-          %button{type: "submit", class: 'login__btn'}
-            ログイン
+        = form_for @user, url:  user_session_path, method: :post, class: "session__container__main" do |f|
+          .login__content__form__group
+            = f.email_field :email, placeholder: "メールアドレス", class: "login__input__text" #, autofocus: true, autocomplete: "email"
+            - if session[:errormail]
+              %q メールアドレスが無効です
+          .login__content__form__group
+            = f.password_field :password, placeholder: "パスワード",class: "login__input__text" #,autocomplete: "new-password"
+            - if session[:errorpassword]
+              %q パスワードが無効です
+          .login__content__form__group
+            = f.submit "ログイン", class:"login__btn"
 
   = render "/shared/footer01"
