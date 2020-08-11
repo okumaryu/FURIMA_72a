@@ -82,8 +82,16 @@ group :production do
 end
 
 gem 'haml-rails'
-
 gem 'font-awesome-sass'
+gem 'erb2haml'
+
+gem 'jquery-rails'
+
+gem 'devise'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 
 gem 'payjp'#クレジット設定で必要。参考：https://pay.jp/
 
