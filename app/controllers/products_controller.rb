@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
 
   def show_all_instance
     @user = User.find(@product.seller_id)
-    @product = Product.where(product_id: params[:id])
-    @product_first = Product.where(product_id: params[:id]).first
+    @productphotos = Productphoto.where(product_id:params[:id])
+    @productphoto_first = Productphoto.where(product_id:params[:id]).first
     @category_id = @product.category_id
     @category_parent = Category.find(@category_id).parent.parent
     @category_child = Category.find(@category_id).parent
@@ -53,8 +53,8 @@ class ProductsController < ApplicationController
     child = grandchild.parent
     
      @parent_array = []
-     @parent_array << @item.category.parent.parent.name
-     @parent_array << @item.category.parent.parent.id
+     @parent_array << @product.category.parent.parent.name
+     @parent_array << @product.category.parent.parent.id
 
      @category_children_array = Category.where(ancestry: child.ancestry)
      @child_array = []
@@ -69,7 +69,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if item_params[:images_attributes].nil?
+    if params[:productphotos_attributes].nil?
       flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
       render :edit
     else
@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
       products_params[:prodeuctphotos_attributes].each do |a,b|
         exit_ids << productphotos_params[:productphotos_attributes].dig(:"#{a}",:id).to_i
       end
-      ids = Productphoto.where(product_id: params[:id]).map{|image| image.id }
+      ids = Productphoto.where(product_id: params[:id]).map{|productphoto| productphoto.id }
       delete__db = ids - exit_ids
       Productphoto.where(id:delete__db).destroy_all
       @product.touch
@@ -90,16 +90,15 @@ class ProductsController < ApplicationController
   end
 
   def update_done
-    @item_update = Item.order("updated_at DESC").first
+    @product_update = Product.order("updated_at DESC").first
   end
+end
 
-  
   private
 
   def product_params
    params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id],brand_attributes: [:name]).merge(seller_id: current_user.id)
   end
-
  
-  end
+  
 end
