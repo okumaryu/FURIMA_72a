@@ -1,6 +1,20 @@
 class ProductsController < ApplicationController
 
+  def show_all_instance
+    @user = User.find(@product.seller_id)
+    @product = Product.where(product_id: params[:id])
+    @product_first = Product.where(product_id: params[:id]).first
+    @category_id = @product.category_id
+    @category_parent = Category.find(@category_id).parent.parent
+    @category_child = Category.find(@category_id).parent
+    @category_grandchild = Category.find(@category_id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
   before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren]
+  before_action :show_all_instance, only: [:show, :edit, :destroy]
   def index
   end
 
@@ -34,23 +48,58 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    grandchild = @product.category
+    child = grandchild.parent
+    
+     @parent_array = []
+     @parent_array << @item.category.parent.parent.name
+     @parent_array << @item.category.parent.parent.id
 
+     @category_children_array = Category.where(ancestry: child.ancestry)
+     @child_array = []
+     @child_array << child.name
+     @child_array << child.id
+
+     @category_grandchildren_array = Category.where(ancestry: grandchild.ancestry)
+     @grandchild_array = []
+     @grandchild_array << grandchild.name
+     @grandchild_array << grandchild.id
+
+  end
 
   def update
-    if @product.update(product_params)
-      redirect_to root_path
-    else
+    if item_params[:images_attributes].nil?
+      flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
       render :edit
+    else
+      exit_ids = []
+      products_params[:prodeuctphotos_attributes].each do |a,b|
+        exit_ids << productphotos_params[:productphotos_attributes].dig(:"#{a}",:id).to_i
+      end
+      ids = Productphoto.where(product_id: params[:id]).map{|image| image.id }
+      delete__db = ids - exit_ids
+      Productphoto.where(id:delete__db).destroy_all
+      @product.touch
+      if @product.update(product_params)
+        redirect_to  update_done_products_path
+      else
+        flash.now[:alert] = '更新できませんでした'
+        render :edit
     end
   end
+
+  def update_done
+    @item_update = Item.order("updated_at DESC").first
+  end
+
+  
   private
 
   def product_params
    params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id],brand_attributes: [:name]).merge(seller_id: current_user.id)
   end
 
-  def set_product
-    @product = Product.find(params[:id])
+ 
   end
-
 end

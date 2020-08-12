@@ -20,6 +20,12 @@
                   = f.fields_for :productphotos do |i|
                     .js-file_group{"data-index" => "#{i.index}"}
                       = i.file_field :src, class: 'js-file'
+                    -if @product.persisted?
+                      = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+                  -if @product.persisted?
+                    .js-file_group{"data-index" => "#{@product.productphotos.count}"}
+                      = file_field_tag :src, name: "product[productphotos_attributes][#{@product.productphotos.count}][src]", class: 'js-file'
+
                   %p
                     ドラックアンドドロップ
                   %p
