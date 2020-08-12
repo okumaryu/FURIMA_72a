@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 
+  before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren]
   def index
   end
 
@@ -32,11 +33,24 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+
+
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
   private
 
   def product_params
-   params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src ,:id],brand_attributes: [:name]).merge(seller_id: current_user.id)
+   params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id],brand_attributes: [:name]).merge(seller_id: current_user.id)
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
 end
