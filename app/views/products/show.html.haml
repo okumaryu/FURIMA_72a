@@ -54,6 +54,7 @@
                   着払い
                 - else
                   選択してください
+          - if user_signed_in?
             - if @product.seller_id == current_user.id
               = link_to "/products/#{@product.id}/edit", class: "edit-btn" do
                 商品の編集
