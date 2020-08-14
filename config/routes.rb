@@ -25,13 +25,13 @@ end
     get 'update_done'
     get 'buy'
   end
-
+end
   resources :mypage, only: [:index] do
     collection do
       get :logout
       get :credit
     end
   end
-  resources :users, only: [:new]
+  resources :users, only: [:new] 
 end
 
