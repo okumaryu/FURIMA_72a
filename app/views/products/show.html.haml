@@ -55,7 +55,7 @@
                 - else
                   選択してください
             - if @product.seller_id == current_user.id
-              = link_to "edit_product_path(product)", class: "edit-btn" do
+              = link_to "/products/product[:id]/edit", class: "edit-btn" do
                 商品の編集
               %p
                 or
