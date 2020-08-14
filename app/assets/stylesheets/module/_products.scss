@@ -225,6 +225,7 @@
       margin: 26px auto;
       display: flex;
       justify-content: space-around;
+
       .category-list{
         background-color: white;
         &__img{
@@ -239,6 +240,25 @@
           margin: 0;
           z-index: auto;
         }
+        // .items-box_photo__sold{
+        //   width: 0;
+        //   height: 0;
+        //   border-top: 60px solid #ea352d ;
+        //   border-right: 60px solid transparent;
+        //   border-bottom: 60px solid transparent;
+        //   border-left: 60px solid #ea352d ;
+        //   z-index:100;
+        //   position: relative;
+        //   top:-320px;
+        //   &__inner{
+        //     transform: rotate(-45deg);
+        //     font-size: 28px;
+        //     margin:-35px 0px 0px -55px;
+        //     color: #fff;
+        //     letter-spacing: 2px;
+        //     font-weight: 600;
+        //   }
+        // }
         &__body{
           width: calc(220px - 16px - 16px);
           text-decoration: none;
@@ -247,6 +267,7 @@
           color: #333;
           padding: 16px;
           &__name{
+            font-size: 30px;
             overflow: hidden;
             line-height: 1.5;
             text-align: left;
