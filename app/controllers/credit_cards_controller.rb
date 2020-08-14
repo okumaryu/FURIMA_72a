@@ -1,6 +1,11 @@
 class CreditCardsController < ApplicationController
 
+  require "payjp"
+  before_action :set_card
+
   def new
+    card = Card.where(user_id: current_user.id).first
+    redirect_to action: "index" if card.present?
   end
 
   def create
@@ -16,11 +21,17 @@ class CreditCardsController < ApplicationController
       )
       @card = CreditCard.new(user_id: current_user.id, token: payjp_token)
       if @card.save
-        redirect_to user_path(current_user)
+        redirect_to action: "index"
       else
-        render :new
+        redirect_to action: "create"
       end
     end
   end
-  
+
+  private
+
+  def set_card
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
 end
