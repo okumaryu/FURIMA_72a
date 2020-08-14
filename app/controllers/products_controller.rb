@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren]
+  
 
   def index
   end
@@ -35,8 +36,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
-    @product_photos = @product.productphotos
+    
   end
 
   def update
@@ -57,14 +57,11 @@ class ProductsController < ApplicationController
    params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id],brand_attributes: [:name,:_destroy]).merge(seller_id: current_user.id)
   end
 
-  
-  def category_parent_array
-    @category_parent_array = Category.where(ancestry: nil).each do |parent|
-    end
-  end
 
   def set_product
     @product = Product.find(params[:id])
+    @product_photos = @product.productphotos
   end
 
+  
 end

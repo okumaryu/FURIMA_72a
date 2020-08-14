@@ -65,6 +65,7 @@
                     .exhibitionPage__main__contents__detail__category__title
                       %label.sab-title カテゴリー
                       %span.required 必須
+                  
                     .exhibitionPage__main__contents__detail__category__choose
                       = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
                     //.size-sellect_form
