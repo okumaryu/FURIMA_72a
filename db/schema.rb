@@ -40,13 +40,13 @@ ActiveRecord::Schema.define(version: 2020_07_24_094215) do
     t.integer "price", null: false
     t.text "description", null: false
     t.string "brand_id"
+    t.integer "category_id", null: false
     t.integer "productcondition_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "postagepayer_id", null: false
     t.integer "shippingdate_id", null: false
     t.integer "seller_id"
     t.integer "buyer_id"
-    t.integer "category_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
