@@ -54,17 +54,17 @@
                   着払い
                 - else
                   選択してください
-          - if user_signed_in?
-            - if @product.seller_id == current_user.id
-              = link_to "/products/#{@product.id}/edit", class: "edit-btn" do
-                商品の編集
-              %p
-                or
-              = link_to "#", class: "delete-btn", method: :delete do
-                この商品を削除する
-            - else
-              = link_to "#", class: "purchase-btn" do
-                購入画面に進む
+              - if user_signed_in?
+                - if @product.seller_id == current_user.id
+                  = link_to "/products/#{@product.id}/edit", class: "edit-btn" do
+                    商品の編集
+                  %p
+                    or
+                  = link_to "/products/#{@product.id}", class: "delete-btn", method: :delete do
+                    この商品を削除する
+                - else
+                  = link_to "#", class: "purchase-btn" do
+                    購入画面に進む
           .item-box__text
             = @product.description
           .item-box__table

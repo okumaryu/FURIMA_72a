@@ -137,5 +137,17 @@ input{
   color: red;
 }
 .listing-select-wrapper--edit{
-  
+  padding: 15px;
+  &__parent{
+    padding-bottom: 20px;
+  }
+  &__child{
+    padding-bottom: 20px;
+  }
+  &__grandchild{
+    padding-bottom: 20px;
+  }
+}
+.listing-default--require{
+  color: red;
 }

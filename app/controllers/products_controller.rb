@@ -36,7 +36,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
@@ -46,6 +45,8 @@ class ProductsController < ApplicationController
       render :edit
     end
   end
+
+  
 
   def update_done
     @product_update = Product.order("updated_at DESC").first

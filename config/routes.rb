@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # get 'signuplist' => 'users/registrations#signuplist'
 end
 
-  resources :products, only: [:new,:create,:show,:edit,:update] do
+  resources :products, only: [:new,:create,:show,:edit,:update,:destroy] do
   collection do
     get 'category/get_category_children', to: 'products#get_category_children', defaults: { format: 'json' }
     get 'category/get_category_grandchildren', to: 'products#get_category_grandchildren', defaults: { format: 'json' }

@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :size
   belongs_to :category
-  has_one :brand
+  has_one :brand, dependent: :destroy
   has_many :productphotos, dependent: :destroy
   accepts_nested_attributes_for :productphotos,:brand,allow_destroy: true
   #has_many :likes, dependent: :destroy
