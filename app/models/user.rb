@@ -26,4 +26,5 @@ class User < ApplicationRecord
     validates :phone_number,     allow_nil: true  , format: { with: /\A\d{10,11}\z/ } #/^\d{10,11}$/ 
 
   has_many :products
+  has_one :credit_card, dependent: :destroy
 end
