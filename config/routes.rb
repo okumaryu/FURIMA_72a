@@ -24,8 +24,9 @@ end
       get 'category/get_category_grandchildren', to: 'products#get_category_grandchildren', defaults: { format: 'json' }
       get 'buy'
     end
-  
   end
+
+  resources :credit_cards
 
   resources :mypage, only: [:index] do
     collection do
@@ -34,5 +35,6 @@ end
     end
   end
   resources :users, only: [:new]
+  
 end
 
