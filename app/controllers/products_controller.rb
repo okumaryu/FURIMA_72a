@@ -12,11 +12,16 @@ class ProductsController < ApplicationController
   end
   
   def new
-    @product = Product.new
-    @product.productphotos.new
-    @product.build_brand
-    @category_parent_array = ["---"]
-    @category_parent_array = Category.where(ancestry: nil)
+    if user_signed_in?
+      @product = Product.new
+      @product.productphotos.new
+      @product.build_brand
+      @category_parent_array = ["---"]
+      @category_parent_array = Category.where(ancestry: nil)
+    else
+      flash.now[:alert] = "ログインしてください。"
+      redirect_to root_path
+    end
   end
 
   def get_category_children
@@ -39,7 +44,7 @@ class ProductsController < ApplicationController
   def buy
     # @address = Address.where(user_id: current_user.id).first # これあるとエラーでる
 
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
 
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @creditcard_information = customer.cards.retrieve(@card.card_id)
@@ -64,7 +69,7 @@ class ProductsController < ApplicationController
     # @creditcard = CreditCard.where(user_id: current_user.id).first
     # @product = Product.find(params[:id])
 
-    Payjp.api_key= Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
 
     charge = Payjp::Charge.create(
       amount: @product.price,
@@ -101,10 +106,11 @@ class ProductsController < ApplicationController
     @product_update = Product.order("updated_at DESC").first
   end
 
+
   private
 
   def product_params
-   params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id],brand_attributes: [:name,:id,:_destroy]).merge(seller_id: current_user.id)
+   params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id,:product_id],brand_attributes: [:name,:id,:_destroy]).merge(seller_id: current_user.id)
   end
   
   def set_product
