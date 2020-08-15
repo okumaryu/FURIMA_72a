@@ -2,8 +2,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.order('id DESC').limit(5)
-    # where(category_id:1..1000)
-    #.where.not(condition:1).where(condition:0)
   end
 
   def show
