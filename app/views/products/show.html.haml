@@ -62,9 +62,18 @@
                     or
                   = link_to product_path(@product), class: "delete-btn", method: :delete do
                     この商品を削除する
+                  
                 - else
-                  = link_to "#", class: "purchase-btn" do
+                  = link_to buy_product_path, class: "purchase-btn" do
                     購入画面に進む
+
+                //- elsif current_user.blank?
+                //  = link_to "購入画面に進む", new_user_session_path, data: { confirm: '【確認】購入はログインが必要です。移動しますか？' }, class: "purchase-btn"
+                // - elsif current_user.credit_card.present?
+                //   = link_to "購入画面に進む", buy_product_path, class: "purchase-btn"
+                // - else current_user.credit_card.blank?
+                //   = link_to "購入画面に進む", new_credit_card_path, data: { confirm: '【確認】クレジットカード登録が必要です。登録画面に移動しますか？' }, class: "purchase-btn"
+
           .item-box__text
             = @product.description
           .item-box__table

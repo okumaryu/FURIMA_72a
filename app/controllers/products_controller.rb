@@ -37,12 +37,12 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    @user = current_user
+    # @user = current_user
     @creditcard = CreditCard.where(user_id: current_user.id).first
-    @address = ShipAddress.where(user_id: current_user.id).first
+    # @address = Address.where(user_id: current_user.id).first # これあるとエラーでる
     @product = Product.find(params[:id])
 
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
 
     customer = Payjp::Customer.retrieve(@creditcard.customer_id)
     @creditcard_information = customer.cards.retrieve(@creditcard.card_id)
@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
     @creditcard = CreditCard.where(user_id: current_user.id).first
     @product = Product.find(params[:id])
 
-    Payjp.api_key= Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    Payjp.api_key= Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
 
     charge = Payjp::Charge.create(
       amount: @product.price,
@@ -75,9 +75,10 @@ class ProductsController < ApplicationController
       currency: 'jpy'
     )
 
-    @product_buyer= Product.find(params[:id])
-    @product_buyer.update( buyer_id: current_user.id)
+    # @product_buyer= Product.find(params[:id])
+    @product_buyer.update(buyer_id: current_user.id)
     redirect_to root_path, notice: '購入しました'
+
   end
 
   def edit
