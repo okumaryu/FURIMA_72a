@@ -1,30 +1,30 @@
 class CreditCardsController < ApplicationController
 
   require "payjp"
-  # before_action :set_card
 
   def new
     card = CreditCard.where(user_id: current_user.id).first
-    # redirect_to action: "show" if card.exists?
+    redirect_to credit_cards_path(@card_id) if card.present?
   end
 
   def pay
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
 
-    if params["payjp_token"].blank?
+    if params['payjp-token'].blank?
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
-        description: '登録テスト',
-        card: params["payjp_token"],
+        description: 'test',
+        email: current_user.email,
+        card: params['payjp-token'],
         metadata: {user_id: current_user.id}
       )
 
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "show"
+        redirect_to credit_cards_path(@card_id)
       else
-        redirect_to action: "pay"
+        redirect_to action: "show"
       end
     end
   end
@@ -33,7 +33,7 @@ class CreditCardsController < ApplicationController
     card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -46,7 +46,7 @@ class CreditCardsController < ApplicationController
     if card.blank?
       redirect_to action: "new" 
     else
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
       @card_brand = @default_card_information.brand
@@ -68,6 +68,10 @@ class CreditCardsController < ApplicationController
   end
 
   private
+  def set_card
+    @card = CreditCard.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
   def move_to_index
     redirect_to root_path unless user_signed_in?
   end
