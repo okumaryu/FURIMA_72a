@@ -35,7 +35,6 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      console.log("OK")
       $('#previews').append(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
       $('.image-box').append(buildFileField(fileIndex[0]));
@@ -46,7 +45,6 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('.image-box').on('click', '.js-remove', function() {
-    console.log("OK")
     const targetIndex = $(this).parent().data('index')
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);

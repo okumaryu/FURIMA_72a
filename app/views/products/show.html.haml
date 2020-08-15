@@ -56,11 +56,11 @@
                   選択してください
               - if user_signed_in?
                 - if @product.seller_id == current_user.id
-                  = link_to "/products/#{@product.id}/edit", class: "edit-btn" do
+                  = link_to edit_product_path(@product), class: "edit-btn" do
                     商品の編集
                   %p
                     or
-                  = link_to "/products/#{@product.id}", class: "delete-btn", method: :delete do
+                  = link_to "#", class: "delete-btn", method: :delete do
                     この商品を削除する
                 - else
                   = link_to "#", class: "purchase-btn" do
