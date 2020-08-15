@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren,]
+  before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren]
   before_action :set_card, only: [:buy, :purchase,]
 
   def index
