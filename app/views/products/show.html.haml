@@ -30,17 +30,17 @@
                     - if @product_photos[1].blank?
                       = image_tag asset_path('logo.png'), type: '', alt: ''
                     - else
-                      = image_tag @product_photos[1].src
+                      = image_tag @product_photos[1].src.to_s
                   %li
                     - if @product_photos[2].blank?
                       = image_tag asset_path('logo.png'), type: '', alt: ''
                     - else
-                      = image_tag @product_photos[2].src
+                      = image_tag @product_photos[2].src.to_s
                   %li
                     - if @product_photos[3].blank?
                       = image_tag asset_path('logo.png'), type: '', alt: ''
                     - else
-                      = image_tag @product_photos[3].src
+                      = image_tag @product_photos[3].src.to_s
           .item-box__price
             %span 
               ¥
@@ -54,16 +54,17 @@
                   着払い
                 - else
                   選択してください
-            - if @product.seller_id == current_user.id
-              = link_to "#", class: "purchase-btn" do
-                購入画面に進む
-            - else
-              = link_to "#", class: "edit-btn" do
-                商品の編集
-              %p
-                or
-              = link_to "#", class: "delete-btn", method: :delete do
-                この商品を削除する
+              - if user_signed_in?
+                - if @product.seller_id == current_user.id
+                  = link_to edit_product_path(@product), class: "edit-btn" do
+                    商品の編集
+                  %p
+                    or
+                  = link_to product_path(@product), class: "delete-btn", method: :delete do
+                    この商品を削除する
+                - else
+                  = link_to "#", class: "purchase-btn" do
+                    購入画面に進む
           .item-box__text
             = @product.description
           .item-box__table

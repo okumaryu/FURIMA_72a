@@ -18,35 +18,33 @@ Rails.application.routes.draw do
   # get 'signuplist' => 'users/registrations#signuplist'
 end
 
-  resources :products, only: [:new,:create,:show] do
-    collection do
-      get 'category/get_category_children', to: 'products#get_category_children', defaults: { format: 'json' }
-      get 'category/get_category_grandchildren', to: 'products#get_category_grandchildren', defaults: { format: 'json' }
-    end
-
-    member do
-      post 'purchase'
-      get  'buy'
-    end
-
-  end
-
   resources :credit_cards, only: [:new, :show]do
       collection do
       post 'show',   to: 'credit_cards#show'
       post 'pay',    to: 'credit_cards#pay'
       post 'delete', to: 'credit_cards#delete'
     end
+
+  resources :products, only: [:new,:create,:show,:edit,:update,:destroy] do
+  collection do
+    get 'category/get_category_children', to: 'products#get_category_children', defaults: { format: 'json' }
+    get 'category/get_category_grandchildren', to: 'products#get_category_grandchildren', defaults: { format: 'json' }
+    get 'update_done'
   end
 
+  member do
+    post 'purchase'
+    get  'buy'
+  end
+
+end
   resources :mypage, only: [:index] do
     collection do
       get :logout
       get :credit
     end
   end
-
-  resources :users, only: [:new]
   
+  resources :users, only: [:new] 
 end
 
