@@ -1,5 +1,3 @@
-= render 'shared/header01'
-
 .credit_cards-show
 
   .credit_cards-show__wrapper
@@ -30,5 +28,3 @@
             = form_tag(delete_credit_cards_path, method: :post, data: { confirm: "【確認】クレジットカード情報を削除してよろしいですか？\n（削除後も再登録可能です）" }, id: 'charge-form',  name: "inputForm") do
               %input{ type: "hidden", name: "card_id", value: "" }
               %button 削除する
-
-= render 'shared/footer01'
