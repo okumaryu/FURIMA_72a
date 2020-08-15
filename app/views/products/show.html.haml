@@ -4,97 +4,105 @@
 %nav.nav-crumbs
   %ul
     %li 
-      = link_to "#" do
+      = link_to "#"do
         FURIMA
     %li
       = icon('fas', 'angle-right')
     %li 
-      = link_to "#" do
-        レディース
+      = link_to @product.category.name
     %li
       = icon('fas', 'angle-right')
     %li 
-      = link_to "#" do
-        トップス
-    %li
-      = icon('fas', 'angle-right')
-    %li 
-      = link_to "#" do
-        Tシャツ/カットソー(半袖/袖なし)
-    %li
-      = icon('fas', 'angle-right')
-    %li product1
+      = @product.name
 .main
   .main-show
     .inner
       .inner-content
         .item-box
           %h2.item-box__name
-            product1
+            = @product.name
           .item-box__img
             %ul
               %li
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+                = image_tag @product_photos[0].src.to_s
                 %ul
                   %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+                    - if @product_photos[1].blank?
+                      = image_tag asset_path('logo.png'), type: '', alt: ''
+                    - else
+                      = image_tag @product_photos[1].src
                   %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+                    - if @product_photos[2].blank?
+                      = image_tag asset_path('logo.png'), type: '', alt: ''
+                    - else
+                      = image_tag @product_photos[2].src
                   %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+                    - if @product_photos[3].blank?
+                      = image_tag asset_path('logo.png'), type: '', alt: ''
+                    - else
+                      = image_tag @product_photos[3].src
           .item-box__price
-            %span ¥10000
+            %span 
+              ¥
+              = @product.price.to_s
             .item-box__price-detail
               %span (税込)
-              %span 送料込み
+              %span 
+                - if @product.postagepayer_id == 1
+                  送料込み
+                - elsif @product.postagepayer_id == 2
+                  着払い
+                - else
+                  選択してください
+              - if user_signed_in?
+                - if @product.seller_id == current_user.id
+                  = link_to edit_product_path(@product), class: "edit-btn" do
+                    商品の編集
+                  %p
+                    or
+                  = link_to "#", class: "delete-btn", method: :delete do
+                    この商品を削除する
+                - else
+                  = link_to "#", class: "purchase-btn" do
+                    購入画面に進む
           .item-box__text
-            親譲りの無鉄砲で小供の時から損ばかりしている。
-            小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。
-            なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。
-            新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。
-            弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+            = @product.description
           .item-box__table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    = @product.seller_id
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to "#" do
-                      レディース
-                      %br
-                    = link_to "#" do
-                      トップス
-                      %br
-                    = link_to "#" do
-                      Tシャツ/カットソー(半袖/袖なし)
+                    = link_to @product.category.name
                 %tr
                   %th ブランド
                   %td
-                %tr
-                  %th 商品のサイズ
-                  %td
+                    = @product.brand_id
                 %tr
                   %th 商品の状態
-                  %td 新品/未使用
+                  %td 
+                    = @product.productcondition.name
                 %tr
                   %th 配送料の負担
-                  %td 送料込み（出品者負担）
+                  %td 
+                    = @product.postagepayer.name
                 %tr
                   %th 発送元の地域
                   %td 
-                    = link_to "#" do
-                      青森県
+                    = @product.prefecture.name
                 %tr
                   %th 発送日の目安
-                  %td 1-2日で発送
+                  %td 
+                    = @product.shippingdate.name
           .optional-area
             %ul
               %li.like-btn
                 = icon('fas', 'star')
-                お気に入り 0
+                お気に入り 15
             %ul
               %li.optional-btn
                 = link_to "#" do
@@ -120,7 +128,6 @@
               %span 後ろの商品
               = icon('fas', 'angle-right')
         .related-items
-          = link_to "#" do
-            レディースをもっと見る
+          = link_to "#{@product.category.name}をもっと見る"
 
   = render "/shared/footer"

@@ -10,7 +10,6 @@
   background-color: white;
 }
 .photos{
-  height: 300px;
   border-bottom: 1px solid rgb(245, 245, 245);
   
 }
@@ -24,7 +23,6 @@ p{
   margin-bottom:5px ;
 }
 .image-box{
-  height: 150px;
   background-color: rgb(245, 245, 245);
   text-align: center;
   padding-top: 20px;
@@ -130,5 +128,26 @@ input{
   padding: 5%;
 }
 .identification__form__field__arbitrary {
+  color: red;
+}
+.exhibitionPage__main__contents__detail__category{
+  padding: 15px;
+}
+.required{
+  color: red;
+}
+.listing-select-wrapper--edit{
+  padding: 15px;
+  &__parent{
+    padding-bottom: 20px;
+  }
+  &__child{
+    padding-bottom: 20px;
+  }
+  &__grandchild{
+    padding-bottom: 20px;
+  }
+}
+.listing-default--require{
   color: red;
 }

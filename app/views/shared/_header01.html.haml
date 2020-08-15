@@ -1,3 +1,4 @@
 .header01
   .header01__logo
-    = image_tag asset_path('logo.png'), type: '', alt: '', size: "140x41" 
+    = link_to root_path, class: "header01__icon" do
+      = image_tag asset_path('logo.png'), type: '', alt: '', size: "140x41" 

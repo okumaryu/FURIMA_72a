@@ -82,8 +82,16 @@ group :production do
 end
 
 gem 'haml-rails'
-
 gem 'font-awesome-sass'
+gem 'erb2haml'
+
+gem 'jquery-rails'
+
+gem 'devise'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 
 gem 'payjp'#クレジット設定で必要。参考：https://pay.jp/
 
@@ -93,5 +101,6 @@ gem 'fog-aws' #参考：https://master.tech-camp.in/curriculums/3967
 gem 'ancestry' #カテゴリにて必要。参考：https://github.com/stefankroes/ancestry
 gem 'jquery-rails' #非同期用
 gem 'jp_prefecture'
-gem 'active_hash'
+gem 'active_hash', '~> 2.3.0' 
+
 gem 'devise' #ログイン機能で必要。参考：https://master.tech-camp.in/curriculums/3641
