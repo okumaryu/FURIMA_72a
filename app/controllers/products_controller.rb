@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren]
-  
+  before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren,]
+  before_action :set_card, only: [:buy, :purchase,]
 
   def index
     @products = Product.all.order('id DESC').limit(4)
@@ -37,15 +37,12 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    # @user = current_user
-    @creditcard = CreditCard.where(user_id: current_user.id).first
     # @address = Address.where(user_id: current_user.id).first # これあるとエラーでる
-    @product = Product.find(params[:id])
 
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
 
-    customer = Payjp::Customer.retrieve(@creditcard.customer_id)
-    @creditcard_information = customer.cards.retrieve(@creditcard.card_id)
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @creditcard_information = customer.cards.retrieve(@card.card_id)
     @card_brand = @creditcard_information.brand 
     case @card_brand
     when "Visa"
@@ -64,8 +61,8 @@ class ProductsController < ApplicationController
   end
     
   def purchase
-    @creditcard = CreditCard.where(user_id: current_user.id).first
-    @product = Product.find(params[:id])
+    # @creditcard = CreditCard.where(user_id: current_user.id).first
+    # @product = Product.find(params[:id])
 
     Payjp.api_key= Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
 
@@ -113,5 +110,9 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
     @product_photos = @product.productphotos
+  end
+
+  def set_card
+    @card = CreditCard.find_by(user_id: current_user.id) if CreditCard.find_by(user_id: current_user.id).present?
   end
 end
