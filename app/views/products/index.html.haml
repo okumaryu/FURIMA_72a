@@ -95,53 +95,25 @@
             %h3.category-text__title 新規投稿商品
         .category-lists
           - @products.each do |product|
-            -if product.buyer_id.present? 
-              .items-box_photo__sold
-                .items-box_photo__sold__inner
-                  SOLD
-            -else
-              .category-list
-                = link_to "#" do
-                  .category-list__img
-                    = image_tag product.productphotos.first.src.url
-                  .category-list__body
-                    %h3.category-list__body__name 
-                      = product.name
-                    .category-list__body__details
-                      %ul
-                        = convert_to_jpy(product.price)
-                        %li
-                          %i.fa.fa-star.fa-spin
-                          0
-                      %p (税込)
+            .category-list
+              = link_to "#" do
+                .category-list__img
+                  = image_tag product.productphotos.first.src.url
+                .category-list__body
+                  %h3.category-list__body__name 
+                    = product.name
+                  .category-list__body__details
+                    %ul
+                      = convert_to_jpy(product.price)
+                      %li
+                        %i.fa.fa-star.fa-spin
+                        0
+                    %p (税込)
+              -if product.buyer_id.present? 
+                .items-box_photo__sold
+                  .items-box_photo__sold__inner
+                    SOLD
   
-      -# .top.body__new__item__list
-      -#   - @items1.each do |item|
-      -#     - sold = Transact.find_by(item_id: item.id)
-      -#     - if sold == nil
-      -#       .top.body__new__item__list__show
-      -#         = link_to "", item_path(item)
-      -#         .top.body__new__item__list__show__image
-      -#           = image_tag(item.images.first.image, size: "184x184")
-      -#           %p
-      -#             #{convert_to_jpy(item.price)}
-      -#         .top.body__new__item__list__show__name
-      -#           = item.name
-      -#           .top.body__new__item__list__show__name__opa
-      -#     - else
-      -#       .top.body__new__item__list__sold
-      -#         = link_to "", item_path(item)
-      -#         .top.body__new__item__list__show__image
-      -#           = image_tag(item.images.first.image, size: "184x184")
-      -#           %p
-      -#             #{convert_to_jpy(item.price)}
-      -#         .top.body__new__item__list__show__name
-      -#           = item.name
-      -#           .top.body__new__item__list__show__name__opa
-      -#         .sold
-      -#           .back-color
-      -#             %a
-      -#               SOLD
 
     .pickup-brand
       %h2.brand-subtitle ピックアップブランド
