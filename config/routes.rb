@@ -22,11 +22,22 @@ end
     collection do
       get 'category/get_category_children', to: 'products#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'products#get_category_grandchildren', defaults: { format: 'json' }
-      get 'buy'
     end
+
+    member do
+      post 'purchase'
+      get  'buy'
+    end
+
   end
 
-  resources :credit_cards
+  resources :credit_cards, only: [:new, :show]do
+      collection do
+      post 'show',   to: 'credit_cards#show'
+      post 'pay',    to: 'credit_cards#pay'
+      post 'delete', to: 'credit_cards#delete'
+    end
+  end
 
   resources :mypage, only: [:index] do
     collection do
@@ -34,6 +45,7 @@ end
       get :credit
     end
   end
+
   resources :users, only: [:new]
   
 end

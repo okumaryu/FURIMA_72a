@@ -27,4 +27,6 @@ class User < ApplicationRecord
 
   has_many :products
   has_one :credit_card, dependent: :destroy
+  has_many :buyer_product, foreign_key: "buyer_id", class_name: "product", dependent: :destroy
+
 end
