@@ -24,8 +24,6 @@
                   = f.fields_for :productphotos do |i|
                     .js-file_group{"data-index" => "#{i.index}"}
                       = i.file_field :src, class: 'js-file'
-                      %span.js-remove
-                        削除
                     
                       -if @product.persisted?
                         = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'

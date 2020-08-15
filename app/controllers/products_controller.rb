@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren]
   
-
+  
   def index
     @products = Product.all.order('id DESC').limit(4)
   end
@@ -12,11 +12,16 @@ class ProductsController < ApplicationController
   end
   
   def new
-    @product = Product.new
-    @product.productphotos.new
-    @product.build_brand
-    @category_parent_array = ["---"]
-    @category_parent_array = Category.where(ancestry: nil)
+    if user_signed_in?
+      @product = Product.new
+      @product.productphotos.new
+      @product.build_brand
+      @category_parent_array = ["---"]
+      @category_parent_array = Category.where(ancestry: nil)
+    else
+      flash.now[:alert] = "ログインしてください。"
+      redirect_to root_path
+    end
   end
 
   def get_category_children
@@ -52,6 +57,7 @@ class ProductsController < ApplicationController
     redirect_to root_path
     else
       render :show
+    end
   end
 
   
@@ -60,10 +66,11 @@ class ProductsController < ApplicationController
     @product_update = Product.order("updated_at DESC").first
   end
 
+
   private
 
   def product_params
-   params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id],brand_attributes: [:name,:id,:_destroy]).merge(seller_id: current_user.id)
+   params.require(:product).permit(:name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id,productphotos_attributes: [:src, :_destroy,:id,:product_id],brand_attributes: [:name,:id,:_destroy]).merge(seller_id: current_user.id)
   end
 
   def buy
