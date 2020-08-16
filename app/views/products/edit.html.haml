@@ -14,7 +14,7 @@
               %p
               最大１０枚までアップロードできます
             .image-box
-              #image-box_id
+              #image-box
                 %label    
                   %i.fas.fa-camera
                   #previews
@@ -28,11 +28,11 @@
                         削除
                       -if @product.persisted?
                         = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
-                    -if @product.persisted?
-                      .js-file_group{"data-index" => "#{@product.productphotos.count}"}
-                        = file_field_tag :src, name: "product[productphotos_attributes][#{@product.productphotos.count}][src]", class: 'js-file'
-                        %span.js-remove
-                          削除
+                  -if @product.persisted?
+                    .js-file_group{"data-index" => "#{@product.productphotos.count}"}
+                      = file_field_tag :src, name: "product[productphotos_attributes][#{@product.productphotos.count}][src]", class: 'js-file'
+                      %span.js-remove
+                        削除
                   %p
                     ドラックアンドドロップ
                   %p
