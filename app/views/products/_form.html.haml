@@ -67,7 +67,7 @@
                       %span.required 必須
                   
                     .exhibitionPage__main__contents__detail__category__choose
-                      = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+                      = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: "選択してください"}, {id: 'parent_category'}
 
                     //.size-sellect_form
                     //  = f.collection_select :size_id, Size.find([1,2]),:id, :size,class:"input"
@@ -82,20 +82,20 @@
             %span.identification__form__field__label 商品の状態
             %span.identification__form__field__arbitrary 必須
             .identification__form__field--input.icon-relative
-              = f.collection_select :productcondition_id, Productcondition.all, :id, :name, class: 'input' 
+              = f.collection_select :productcondition_id, Productcondition.all, :id, :name, {prompt:"選択してください"},class: 'input' 
         .delivery
           .style_formLabel
             %span.identification__form__field__lavel 発送料金の負担 
             %span.identification__form__field__arbitrary 必須
-            = f.collection_select :postagepayer_id, Postagepayer.all, :id, :name, class: 'input'
+            = f.collection_select :postagepayer_id, Postagepayer.all, :id, :name, {prompt:"選択してください"},class: 'input'
           .style_formLabel
             %span.identification__form__field__lavel 発送元の地域
             %span.identification__form__field__arbitrary 必須
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'input'
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt:"選択してください"}, class: 'input'
           .style_formLabel
             %span.identification__form__field__lavel 発送までの日数
             %span.identification__form__field__arbitrary 必須
-            = f.collection_select :shippingdate_id, Shippingdate.all, :id, :name, class: 'input'
+            = f.collection_select :shippingdate_id, Shippingdate.all, :id, :name, {prompt:"選択してください"},class: 'input'
           .price
             .price__celect
               .labels
