@@ -95,22 +95,5 @@ $(document).on('turbolinks:load', function(){
    });
   
    $(".size-sellect_form").hide()
-   //
-   //$('.exhibitionPage__main__contents__detail__category').on('change','#grandchild_category',function AddSizeform() {
-   //  var grandchild_category_id= $('#grandchild_category option:selected').val();
-   //  console.log(grandchild_category_id)
-   //  
-   //  var clothes = clothesArray
-   //  
-   //  var result = clothes.some(function(needSize){
-   //    return needSize === grandchild_category_id 
-   //    
-   //  });
-   //  console.log(result)
-   //   if (result == true){ 
-   //     showSellectForm(function(){$(".size-sellect_form").show()}
-   //     
-   //     )}
-   // });
   });
 });
