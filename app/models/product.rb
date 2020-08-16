@@ -14,7 +14,6 @@ class Product < ApplicationRecord
   has_one :brand, dependent: :destroy
   has_many :productphotos, dependent: :destroy
   accepts_nested_attributes_for :productphotos,:brand,allow_destroy: true
-  belongs_to :user
   belongs_to :buyer, class_name: "User", optional: true, foreign_key: "buyer_id"
 
 end
