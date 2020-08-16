@@ -9,8 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-    @product_photos = @product.productphotos
+  @user = User.find(@product.seller_id)
   end
   
   def new
@@ -35,6 +34,7 @@ class ProductsController < ApplicationController
   
   def create
     @product = Product.new(product_params)
+    
     if @product.save
       redirect_to root_path
     else
