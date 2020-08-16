@@ -96,7 +96,7 @@
         .category-lists
           - @products.each do |product|
             .category-list
-              = link_to "#" do
+              = link_to product_path(product) do
                 .category-list__img
                   = image_tag product.productphotos.first.src.url
                 .category-list__body

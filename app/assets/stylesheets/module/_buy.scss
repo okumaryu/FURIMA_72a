@@ -35,7 +35,7 @@
         justify-content: center;
         align-items: center;
         &--img-loaded{
-          width: auto;
+          max-width: 80px;
           max-height: 80px;
         }
       }
@@ -116,20 +116,21 @@
     margin: 8px 0 0;
     font-size: 14px;
   }
-
+  .products-purchase-buy-card-logo{
+    margin: 8px 0 0;
+  }
 }
-
-
 
 p.products-purchase-has-info-text{
   color: #888;
   line-height: 1.5;
   padding-bottom: 24px;
-  font-size: 14px;
+  font-size: 12px;
   span.products-purchase-bold{
     font-weight: 600;
   }
 }
+
 .products-purchase-btn-default.btn-red.bold{
   background: #3CCACE;
   border: 1px solid #3CCACE;
@@ -142,4 +143,14 @@ p.products-purchase-has-info-text{
   cursor: pointer;
   text-align: center;
   font-weight: 600;
+input{
+  background: #3CCACE;
+  text-decoration: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+}
 } 
