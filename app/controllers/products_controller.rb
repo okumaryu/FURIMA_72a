@@ -65,6 +65,8 @@ class ProductsController < ApplicationController
     when "Discover"
       @card_src = "discover.gif"
     end
+
+    @user = User.find_by(id: current_user.id)
   end
     
   def purchase

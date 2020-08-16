@@ -37,7 +37,7 @@ class CreditCardsController < ApplicationController
       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      card.delete
+      @card.delete
     end
       redirect_to credit_mypage_index_path(@card_id)
   end

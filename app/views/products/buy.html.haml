@@ -8,7 +8,7 @@
       .products-purchase-buy-content__inner
         .products-purchase-buy-content__inner__item-box
           %h3.products-purchase-buy-content__inner__item-box__image
-            %img.products-purchase-buy-content__inner__item-box__image--img-loaded{src: @product.product_images.first.image.url}/
+            %img.products-purchase-buy-content__inner__item-box__image--img-loaded{src: @product.productphotos.first.src.url}/
           .products-purchase-buy-content__inner__item-box__detail
             %p.products-purchase-buy-content__inner__item-box__detail__name
               = @product.name
@@ -52,22 +52,22 @@
               %address.products-purchase-buy-user-info-text
                 %p
                   %br
-                  = "〒" + @user.zip_code
+                  = "〒" + "#{@user.zipcode}"
                   %br
-                  = @user.prefecture.name
+                  = Prefecture.find_by_id(@user.prefecture_code).name
                   %br
                   = @user.city
                   = @user.house_number
                   = @user.building_name
                   %br
-                  =@user.last_name
+                  =@user.family_name
                   =@user.first_name
           %section.buy-user-info
             %p.products-purchase-has-info-text
               郵便局/コンビニ受取をご希望の方は、購入後に
               %span.products-purchase-bold> 取引画面
               から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
-           %label.products-purchase-btn-default.btn-red.bold
-             = form.submit '購入する'
+          %label.products-purchase-btn-default.btn-red.bold
+            = form.submit '購入する'
 
 = render 'shared/footer01'
