@@ -19,8 +19,7 @@ class ProductsController < ApplicationController
       @category_parent_array = ["---"]
       @category_parent_array = Category.where(ancestry: nil)
     else
-      flash.now[:alert] = "ログインしてください。"
-      redirect_to root_path
+      redirect_to new_user_session_path
     end
   end
 
