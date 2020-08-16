@@ -52,11 +52,9 @@
 ## Creditcards
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|expiry_year|integer(2)|null: false|
-|expiry_month|integer(2)|null: false|
-|security_code|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|card_id|integer|null: false|
+|customer_id|integer|null: false|
+|user_id|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
