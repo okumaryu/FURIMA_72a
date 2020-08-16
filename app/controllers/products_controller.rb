@@ -77,9 +77,11 @@ class ProductsController < ApplicationController
     )
 
     @product_buyer= Product.find(params[:id])
-    @product_buyer.update(buyer_id: current_user.id)
-    redirect_to root_path, notice: '購入しました'
-
+    if @product_buyer.update(buyer_id: current_user.id)
+      redirect_to root_path, notice: '購入しました'
+    else
+      render :show, notice: '購入できませんでした'
+    end
   end
 
   def edit

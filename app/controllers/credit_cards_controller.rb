@@ -5,7 +5,6 @@ class CreditCardsController < ApplicationController
   before_action :set_card, only: [:new, :delete, :show]
 
   def new
-    # card = CreditCard.where(user_id: current_user.id).first
     redirect_to action: "show" if @card.present?
   end
 
@@ -32,7 +31,7 @@ class CreditCardsController < ApplicationController
   end
 
   def delete
-    if @card.blank?
+    if @card.present?
     else
       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
