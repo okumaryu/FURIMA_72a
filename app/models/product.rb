@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  validates :name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id, presence: true
+  validates :productphotos, :name,:description,:price,:category_id,:productcondition_id,:prefecture_id,:postagepayer_id,:shippingdate_id, presence: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :productcondition
   extend ActiveHash::Associations::ActiveRecordExtensions
