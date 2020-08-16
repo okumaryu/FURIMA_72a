@@ -44,8 +44,6 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    # @address = Address.where(user_id: current_user.id).first # これあるとエラーでる
-
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
 
     customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -70,9 +68,6 @@ class ProductsController < ApplicationController
   end
     
   def purchase
-    # @creditcard = CreditCard.where(user_id: current_user.id).first
-    # @product = Product.find(params[:id])
-
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
 
     charge = Payjp::Charge.create(
