@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_094215) do
+ActiveRecord::Schema.define(version: 2020_08_14_225812) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2020_07_24_094215) do
     t.index ["name"], name: "index_categories_on_name"
   end
 
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
   create_table "productphotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "src", null: false
     t.bigint "product_id"
@@ -45,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_094215) do
     t.integer "prefecture_id", null: false
     t.integer "postagepayer_id", null: false
     t.integer "shippingdate_id", null: false
-    t.integer "seller_id", null: false
+    t.integer "seller_id"
     t.integer "buyer_id"
   end
 
@@ -76,5 +85,6 @@ ActiveRecord::Schema.define(version: 2020_07_24_094215) do
   end
 
   add_foreign_key "brands", "products"
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "productphotos", "products"
 end

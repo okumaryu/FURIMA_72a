@@ -54,17 +54,31 @@
                   着払い
                 - else
                   選択してください
-              - if user_signed_in?
-                - if @product.seller_id == current_user.id
-                  = link_to edit_product_path(@product), class: "edit-btn" do
-                    商品の編集
-                  %p
-                    or
-                  = link_to product_path(@product), class: "delete-btn", method: :delete do
-                    この商品を削除する
-                - else
-                  = link_to "#", class: "purchase-btn" do
-                    購入画面に進む
+
+              - if user_signed_in? && @product.seller_id == current_user.id
+                = link_to edit_product_path(@product), class: "edit-btn" do
+                  商品の編集
+                %p
+                  or
+                = link_to product_path(@product), class: "delete-btn", method: :delete do
+                  この商品を削除する
+            
+              - elsif @product.buyer_id.present? 
+                = link_to "#", class: "purchase-btn-gray" do
+                  売り切れました
+
+              - elsif current_user.blank?
+                = link_to new_user_session_path, data: {confirm: '【確認】購入はログインが必要です。移動しますか？' }, class: "purchase-btn" do
+                  購入画面に進む
+
+              - elsif current_user.credit_card.present?
+                = link_to buy_product_path, class: "purchase-btn" do
+                  購入画面に進む
+
+              - elsif current_user.credit_card.blank?
+                = link_to new_credit_card_path, data: { confirm: '【確認】クレジットカード登録が必要です。登録画面に移動しますか？' }, class: "purchase-btn" do
+                  購入画面に進む
+
           .item-box__text
             = @product.description
           .item-box__table
