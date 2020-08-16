@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create,:get_category_children,:get_category_grandchildren]
   before_action :set_card, only: [:buy, :purchase]
+  before_action :move_to_index_buy, only: [:buy, :purchase]
+  before_action :move_to_index_purchased, only: [:buy, :purchase]
 
   def index
     @products = Product.all.order('id DESC').limit(4)
@@ -73,7 +75,7 @@ class ProductsController < ApplicationController
 
     charge = Payjp::Charge.create(
       amount: @product.price,
-      customer: Payjp::Customer.retrieve(@creditcard.customer_id),
+      customer: Payjp::Customer.retrieve(@card.customer_id),
       currency: 'jpy'
     )
 
@@ -121,4 +123,15 @@ class ProductsController < ApplicationController
   def set_card
     @card = CreditCard.find_by(user_id: current_user.id) if CreditCard.find_by(user_id: current_user.id).present?
   end
+
+  def move_to_index_buy
+    @product = Product.find(params[:id])
+    redirect_to root_path if current_user.id == @product.buyer_id
+  end
+
+  def move_to_index_purchased
+    @product = Product.find(params[:id])
+    redirect_to root_path if @product.buyer_id.present? 
+  end
+
 end

@@ -1,11 +1,12 @@
 class CreditCardsController < ApplicationController
 
   require "payjp"
+  before_action :move_to_index
   before_action :set_card, only: [:new, :delete, :show]
 
   def new
-    card = CreditCard.where(user_id: current_user.id).first
-    redirect_to credit_cards_path(@card_id) if card.present?
+    # card = CreditCard.where(user_id: current_user.id).first
+    redirect_to action: "show" if @card.present?
   end
 
   def pay
@@ -23,7 +24,7 @@ class CreditCardsController < ApplicationController
 
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to credit_cards_path(@card_id)
+        redirect_to credit_card_path(@card_id)
       else
         redirect_to action: "show"
       end
@@ -31,14 +32,14 @@ class CreditCardsController < ApplicationController
   end
 
   def delete
-    if card.present?
+    if @card.blank?
     else
       Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       card.delete
     end
-      redirect_to action: "new"
+      redirect_to credit_mypage_index_path(@card_id)
   end
 
   def show
