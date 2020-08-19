@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def show
   @user = User.find(@product.seller_id)
+  @sell_price = @product.price * 1.1 
   end
   
   def new
